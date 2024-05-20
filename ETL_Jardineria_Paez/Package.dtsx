@@ -11,8 +11,8 @@
   DTS:LocaleID="9226"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="68"
-  DTS:VersionGUID="{9EF94D29-BD34-4F3B-A027-05BE7A583019}">
+  DTS:VersionBuild="108"
+  DTS:VersionGUID="{C6979628-BC65-492A-BB8A-7C85F05BA1B1}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -4371,6 +4371,1732 @@ ORDER BY ID_cliente</property>
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
+      DTS:refId="Package\Transformacion_JardineriaStagingDIMProducto"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{A90B8725-58B2-4544-9874-3D36A3DFDDDB}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Transformacion_JardineriaStagingDIMProducto"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Transformacion_JardineriaStagingDIMProducto\DestinoDIMProducto"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Carga datos en una base de datos compatible con ADO.NET que use una vista o tabla de base de datos. Se cargan datos en una tabla nueva o existente. Por ejemplo, se usa un proveedor ADO.NET para ODBC para cargar datos en un destino ODBC.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;2"
+              description="Carga datos en una base de datos compatible con ADO.NET que use una vista o tabla de base de datos. Se cargan datos en una tabla nueva o existente. Por ejemplo, se usa un proveedor ADO.NET para ODBC para cargar datos en un destino ODBC."
+              name="DestinoDIMProducto"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Nombre de la tabla de la base de datos de destino."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"DIMProducto"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifique el número de filas por lote. El valor predeterminado es 0, que utiliza el mismo tamaño que el búfer interno de SSIS. "
+                  expressionType="Notify"
+                  name="BatchSize">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito. "
+                  expressionType="Notify"
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Especifica si se debe usar la interfaz SqlBulkCopy para mejorar el rendimiento de las operaciones de inserción masiva. No todos los proveedores admiten esta interfaz."
+                  expressionType="Notify"
+                  name="UseBulkInsertWhenPossible">true</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.ADONETDestination</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Transformacion_JardineriaStagingDIMProducto\DestinoDIMProducto.Connections[IDbConnection]"
+                  connectionManagerID="{C0D7A864-BFFD-4B93-BB82-BDD620EDE567}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-4NV230H_SQLEXPRESS.StagingJardineria]"
+                  description="Administrador de conexiones administrado"
+                  name="IDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Transformacion_JardineriaStagingDIMProducto\DestinoDIMProducto.Inputs[Entrada de destino de ADO NET]"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de destino de ADO NET">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\DestinoDIMProducto.Inputs[Entrada de destino de ADO NET].Columns[ID_producto]"
+                      cachedDataType="i4"
+                      cachedName="ID_producto"
+                      cachedSortKeyPosition="1"
+                      externalMetadataColumnId="Package\Transformacion_JardineriaStagingDIMProducto\DestinoDIMProducto.Inputs[Entrada de destino de ADO NET].ExternalColumns[ID_producto]"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\Merge Join.Outputs[Merge Join Output].Columns[ID_producto]" />
+                    <inputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\DestinoDIMProducto.Inputs[Entrada de destino de ADO NET].Columns[ID_producto_o]"
+                      cachedDataType="i4"
+                      cachedName="ID_producto_o"
+                      externalMetadataColumnId="Package\Transformacion_JardineriaStagingDIMProducto\DestinoDIMProducto.Inputs[Entrada de destino de ADO NET].ExternalColumns[ID_producto_o]"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\Merge Join.Outputs[Merge Join Output].Columns[ID_producto_o]" />
+                    <inputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\DestinoDIMProducto.Inputs[Entrada de destino de ADO NET].Columns[CodigoProducto]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="CodigoProducto"
+                      externalMetadataColumnId="Package\Transformacion_JardineriaStagingDIMProducto\DestinoDIMProducto.Inputs[Entrada de destino de ADO NET].ExternalColumns[CodigoProducto]"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\Merge Join.Outputs[Merge Join Output].Columns[CodigoProducto]" />
+                    <inputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\DestinoDIMProducto.Inputs[Entrada de destino de ADO NET].Columns[NombreProducto]"
+                      cachedDataType="wstr"
+                      cachedLength="70"
+                      cachedName="NombreProducto"
+                      externalMetadataColumnId="Package\Transformacion_JardineriaStagingDIMProducto\DestinoDIMProducto.Inputs[Entrada de destino de ADO NET].ExternalColumns[NombreProducto]"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\Merge Join.Outputs[Merge Join Output].Columns[NombreProducto]" />
+                    <inputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\DestinoDIMProducto.Inputs[Entrada de destino de ADO NET].Columns[CategoriaProducto]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="CategoriaProducto"
+                      externalMetadataColumnId="Package\Transformacion_JardineriaStagingDIMProducto\DestinoDIMProducto.Inputs[Entrada de destino de ADO NET].ExternalColumns[CategoriaProducto]"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\Merge Join.Outputs[Merge Join Output].Columns[CategoriaProducto]" />
+                    <inputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\DestinoDIMProducto.Inputs[Entrada de destino de ADO NET].Columns[Dimensiones]"
+                      cachedDataType="wstr"
+                      cachedLength="25"
+                      cachedName="Dimensiones"
+                      externalMetadataColumnId="Package\Transformacion_JardineriaStagingDIMProducto\DestinoDIMProducto.Inputs[Entrada de destino de ADO NET].ExternalColumns[Dimensiones]"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\Merge Join.Outputs[Merge Join Output].Columns[Dimensiones]" />
+                    <inputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\DestinoDIMProducto.Inputs[Entrada de destino de ADO NET].Columns[Descripcion]"
+                      cachedDataType="nText"
+                      cachedName="Descripcion"
+                      externalMetadataColumnId="Package\Transformacion_JardineriaStagingDIMProducto\DestinoDIMProducto.Inputs[Entrada de destino de ADO NET].ExternalColumns[Descripcion]"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\Merge Join.Outputs[Merge Join Output].Columns[Descripcion]" />
+                    <inputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\DestinoDIMProducto.Inputs[Entrada de destino de ADO NET].Columns[CantidadStock]"
+                      cachedDataType="i2"
+                      cachedName="CantidadStock"
+                      externalMetadataColumnId="Package\Transformacion_JardineriaStagingDIMProducto\DestinoDIMProducto.Inputs[Entrada de destino de ADO NET].ExternalColumns[CantidadStock]"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\Merge Join.Outputs[Merge Join Output].Columns[CantidadStock]" />
+                    <inputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\DestinoDIMProducto.Inputs[Entrada de destino de ADO NET].Columns[PrecioVenta]"
+                      cachedDataType="numeric"
+                      cachedName="PrecioVenta"
+                      cachedPrecision="15"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Transformacion_JardineriaStagingDIMProducto\DestinoDIMProducto.Inputs[Entrada de destino de ADO NET].ExternalColumns[PrecioVenta]"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\Merge Join.Outputs[Merge Join Output].Columns[PrecioVenta]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\DestinoDIMProducto.Inputs[Entrada de destino de ADO NET].ExternalColumns[ID_producto]"
+                      dataType="i4"
+                      name="ID_producto" />
+                    <externalMetadataColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\DestinoDIMProducto.Inputs[Entrada de destino de ADO NET].ExternalColumns[ID_producto_o]"
+                      dataType="i4"
+                      name="ID_producto_o" />
+                    <externalMetadataColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\DestinoDIMProducto.Inputs[Entrada de destino de ADO NET].ExternalColumns[CodigoProducto]"
+                      dataType="wstr"
+                      length="15"
+                      name="CodigoProducto" />
+                    <externalMetadataColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\DestinoDIMProducto.Inputs[Entrada de destino de ADO NET].ExternalColumns[NombreProducto]"
+                      dataType="wstr"
+                      length="70"
+                      name="NombreProducto" />
+                    <externalMetadataColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\DestinoDIMProducto.Inputs[Entrada de destino de ADO NET].ExternalColumns[CategoriaProducto]"
+                      dataType="wstr"
+                      length="50"
+                      name="CategoriaProducto" />
+                    <externalMetadataColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\DestinoDIMProducto.Inputs[Entrada de destino de ADO NET].ExternalColumns[Dimensiones]"
+                      dataType="wstr"
+                      length="25"
+                      name="Dimensiones" />
+                    <externalMetadataColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\DestinoDIMProducto.Inputs[Entrada de destino de ADO NET].ExternalColumns[Descripcion]"
+                      dataType="wstr"
+                      length="2147483647"
+                      name="Descripcion" />
+                    <externalMetadataColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\DestinoDIMProducto.Inputs[Entrada de destino de ADO NET].ExternalColumns[CantidadStock]"
+                      dataType="i2"
+                      name="CantidadStock" />
+                    <externalMetadataColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\DestinoDIMProducto.Inputs[Entrada de destino de ADO NET].ExternalColumns[PrecioVenta]"
+                      dataType="numeric"
+                      name="PrecioVenta"
+                      precision="15"
+                      scale="2" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Transformacion_JardineriaStagingDIMProducto\DestinoDIMProducto.Outputs[Salida de error de destino de ADO NET]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de destino de ADO NET"
+                  synchronousInputId="Package\Transformacion_JardineriaStagingDIMProducto\DestinoDIMProducto.Inputs[Entrada de destino de ADO NET]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\DestinoDIMProducto.Outputs[Salida de error de destino de ADO NET].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\DestinoDIMProducto.Outputs[Salida de error de destino de ADO NET].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\DestinoDIMProducto.Outputs[Salida de error de destino de ADO NET].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\DestinoDIMProducto.Outputs[Salida de error de destino de ADO NET].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Transformacion_JardineriaStagingDIMProducto\Merge Join"
+              componentClassID="Microsoft.MergeJoin"
+              contactInfo="Merge Join;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combine two sorted data flows into one using the FULL, LEFT, or INNER join. We recommend this transformation when data flows can be sorted at their sources."
+              name="Merge Join"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of join to perform."
+                  name="JoinType"
+                  typeConverter="JoinType">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of columns in the ordering key."
+                  name="NumKeyColumns">1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the null values are treated as equal values."
+                  name="TreatNullsAsEqual">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Indicates the requested maximum buffers per input before blocking."
+                  name="MaxBuffersPerInput">5</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Transformacion_JardineriaStagingDIMProducto\Merge Join.Inputs[Merge Join Left Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Left Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\Merge Join.Inputs[Merge Join Left Input].Columns[ID_producto]"
+                      cachedDataType="i4"
+                      cachedName="ID_producto"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\SortStProducto.Outputs[Sort Output].Columns[ID_producto]" />
+                    <inputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\Merge Join.Inputs[Merge Join Left Input].Columns[ID_producto_o]"
+                      cachedDataType="i4"
+                      cachedName="ID_producto_o"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\SortStProducto.Outputs[Sort Output].Columns[ID_producto_o]" />
+                    <inputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\Merge Join.Inputs[Merge Join Left Input].Columns[CodigoProducto]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="CodigoProducto"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\SortStProducto.Outputs[Sort Output].Columns[CodigoProducto]" />
+                    <inputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\Merge Join.Inputs[Merge Join Left Input].Columns[NombreProducto]"
+                      cachedDataType="wstr"
+                      cachedLength="70"
+                      cachedName="NombreProducto"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\SortStProducto.Outputs[Sort Output].Columns[NombreProducto]" />
+                    <inputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\Merge Join.Inputs[Merge Join Left Input].Columns[CategoriaProducto]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="CategoriaProducto"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\SortStProducto.Outputs[Sort Output].Columns[CategoriaProducto]" />
+                    <inputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\Merge Join.Inputs[Merge Join Left Input].Columns[Dimensiones]"
+                      cachedDataType="wstr"
+                      cachedLength="25"
+                      cachedName="Dimensiones"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\SortStProducto.Outputs[Sort Output].Columns[Dimensiones]" />
+                    <inputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\Merge Join.Inputs[Merge Join Left Input].Columns[Descripcion]"
+                      cachedDataType="nText"
+                      cachedName="Descripcion"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\SortStProducto.Outputs[Sort Output].Columns[Descripcion]" />
+                    <inputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\Merge Join.Inputs[Merge Join Left Input].Columns[CantidadStock]"
+                      cachedDataType="i2"
+                      cachedName="CantidadStock"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\SortStProducto.Outputs[Sort Output].Columns[CantidadStock]" />
+                    <inputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\Merge Join.Inputs[Merge Join Left Input].Columns[PrecioVenta]"
+                      cachedDataType="numeric"
+                      cachedName="PrecioVenta"
+                      cachedPrecision="15"
+                      cachedScale="2"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\SortStProducto.Outputs[Sort Output].Columns[PrecioVenta]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Transformacion_JardineriaStagingDIMProducto\Merge Join.Inputs[Merge Join Right Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Right Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\Merge Join.Inputs[Merge Join Right Input].Columns[ID_producto]"
+                      cachedDataType="i4"
+                      cachedName="ID_producto"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\SortDIMProducto.Outputs[Sort Output].Columns[ID_producto]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Transformacion_JardineriaStagingDIMProducto\Merge Join.Outputs[Merge Join Output]"
+                  isSorted="true"
+                  name="Merge Join Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\Merge Join.Outputs[Merge Join Output].Columns[ID_producto]"
+                      dataType="i4"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\Merge Join.Outputs[Merge Join Output].Columns[ID_producto]"
+                      name="ID_producto"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Transformacion_JardineriaStagingDIMProducto\Merge Join.Inputs[Merge Join Left Input].Columns[ID_producto]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\Merge Join.Outputs[Merge Join Output].Columns[ID_producto_o]"
+                      dataType="i4"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\Merge Join.Outputs[Merge Join Output].Columns[ID_producto_o]"
+                      name="ID_producto_o">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Transformacion_JardineriaStagingDIMProducto\Merge Join.Inputs[Merge Join Left Input].Columns[ID_producto_o]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\Merge Join.Outputs[Merge Join Output].Columns[CodigoProducto]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\Merge Join.Outputs[Merge Join Output].Columns[CodigoProducto]"
+                      name="CodigoProducto">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Transformacion_JardineriaStagingDIMProducto\Merge Join.Inputs[Merge Join Left Input].Columns[CodigoProducto]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\Merge Join.Outputs[Merge Join Output].Columns[NombreProducto]"
+                      dataType="wstr"
+                      length="70"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\Merge Join.Outputs[Merge Join Output].Columns[NombreProducto]"
+                      name="NombreProducto">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Transformacion_JardineriaStagingDIMProducto\Merge Join.Inputs[Merge Join Left Input].Columns[NombreProducto]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\Merge Join.Outputs[Merge Join Output].Columns[CategoriaProducto]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\Merge Join.Outputs[Merge Join Output].Columns[CategoriaProducto]"
+                      name="CategoriaProducto">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Transformacion_JardineriaStagingDIMProducto\Merge Join.Inputs[Merge Join Left Input].Columns[CategoriaProducto]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\Merge Join.Outputs[Merge Join Output].Columns[Dimensiones]"
+                      dataType="wstr"
+                      length="25"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\Merge Join.Outputs[Merge Join Output].Columns[Dimensiones]"
+                      name="Dimensiones">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Transformacion_JardineriaStagingDIMProducto\Merge Join.Inputs[Merge Join Left Input].Columns[Dimensiones]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\Merge Join.Outputs[Merge Join Output].Columns[Descripcion]"
+                      dataType="nText"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\Merge Join.Outputs[Merge Join Output].Columns[Descripcion]"
+                      name="Descripcion">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Transformacion_JardineriaStagingDIMProducto\Merge Join.Inputs[Merge Join Left Input].Columns[Descripcion]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\Merge Join.Outputs[Merge Join Output].Columns[CantidadStock]"
+                      dataType="i2"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\Merge Join.Outputs[Merge Join Output].Columns[CantidadStock]"
+                      name="CantidadStock">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Transformacion_JardineriaStagingDIMProducto\Merge Join.Inputs[Merge Join Left Input].Columns[CantidadStock]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\Merge Join.Outputs[Merge Join Output].Columns[PrecioVenta]"
+                      dataType="numeric"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\Merge Join.Outputs[Merge Join Output].Columns[PrecioVenta]"
+                      name="PrecioVenta"
+                      precision="15"
+                      scale="2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Transformacion_JardineriaStagingDIMProducto\Merge Join.Inputs[Merge Join Left Input].Columns[PrecioVenta]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\Merge Join.Outputs[Merge Join Output].Columns[ID_productoDIM]"
+                      dataType="i4"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\Merge Join.Outputs[Merge Join Output].Columns[ID_productoDIM]"
+                      name="ID_productoDIM">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Transformacion_JardineriaStagingDIMProducto\Merge Join.Inputs[Merge Join Right Input].Columns[ID_producto]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Consume datos de SQL Server, OLE DB, ODBC u Oracle mediante el correspondiente proveedor de datos de .NET Framework. Se usa una instrucción Transact-SQL para definir el conjunto de resultados. Por ejemplo, se extraen datos de SQL Server con el proveedor de datos de .NET Framework para SQL Server.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+              description="Consume datos de SQL Server, OLE DB, ODBC u Oracle mediante el correspondiente proveedor de datos de .NET Framework. Se usa una instrucción Transact-SQL para definir el conjunto de resultados. Por ejemplo, se extraen datos de SQL Server con el proveedor de datos de .NET Framework para SQL Server."
+              name="OrigenDIMProducto"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Especifica la instrucción SQL utilizada por el componente para extraer datos."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si se debe permitir que columnas externas que no sean de cadenas se conviertan implícitamente en cadenas en las columnas de salida."
+                  name="AllowImplicitStringConversion">true</property>
+                <property
+                  dataType="System.String"
+                  description="Nombre de la tabla de la base de datos de origen."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"dbo"."DIMProducto"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especificar el modo de recuperar información de columnas externas"
+                  name="AccessMode"
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">0</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.DataReaderSourceAdapter</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Connections[IDbConnection]"
+                  connectionManagerID="{C0D7A864-BFFD-4B93-BB82-BDD620EDE567}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-4NV230H_SQLEXPRESS.StagingJardineria]"
+                  description="Administrador de conexiones administrado"
+                  name="IDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de origen de ADO NET]"
+                  name="Salida de origen de ADO NET">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de origen de ADO NET].Columns[ID_producto]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de origen de ADO NET].ExternalColumns[ID_producto]"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de origen de ADO NET].Columns[ID_producto]"
+                      name="ID_producto"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de origen de ADO NET].Columns[ID_producto_o]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de origen de ADO NET].ExternalColumns[ID_producto_o]"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de origen de ADO NET].Columns[ID_producto_o]"
+                      name="ID_producto_o"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de origen de ADO NET].Columns[CodigoProducto]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de origen de ADO NET].ExternalColumns[CodigoProducto]"
+                      length="15"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de origen de ADO NET].Columns[CodigoProducto]"
+                      name="CodigoProducto"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de origen de ADO NET].Columns[NombreProducto]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de origen de ADO NET].ExternalColumns[NombreProducto]"
+                      length="70"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de origen de ADO NET].Columns[NombreProducto]"
+                      name="NombreProducto"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de origen de ADO NET].Columns[CategoriaProducto]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de origen de ADO NET].ExternalColumns[CategoriaProducto]"
+                      length="50"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de origen de ADO NET].Columns[CategoriaProducto]"
+                      name="CategoriaProducto"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de origen de ADO NET].Columns[Dimensiones]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de origen de ADO NET].ExternalColumns[Dimensiones]"
+                      length="25"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de origen de ADO NET].Columns[Dimensiones]"
+                      name="Dimensiones"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de origen de ADO NET].Columns[Descripcion]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de origen de ADO NET].ExternalColumns[Descripcion]"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de origen de ADO NET].Columns[Descripcion]"
+                      name="Descripcion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de origen de ADO NET].Columns[CantidadStock]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de origen de ADO NET].ExternalColumns[CantidadStock]"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de origen de ADO NET].Columns[CantidadStock]"
+                      name="CantidadStock"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de origen de ADO NET].Columns[PrecioVenta]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de origen de ADO NET].ExternalColumns[PrecioVenta]"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de origen de ADO NET].Columns[PrecioVenta]"
+                      name="PrecioVenta"
+                      precision="15"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de origen de ADO NET].ExternalColumns[ID_producto]"
+                      dataType="i4"
+                      name="ID_producto" />
+                    <externalMetadataColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de origen de ADO NET].ExternalColumns[ID_producto_o]"
+                      dataType="i4"
+                      name="ID_producto_o" />
+                    <externalMetadataColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de origen de ADO NET].ExternalColumns[CodigoProducto]"
+                      dataType="wstr"
+                      length="15"
+                      name="CodigoProducto" />
+                    <externalMetadataColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de origen de ADO NET].ExternalColumns[NombreProducto]"
+                      dataType="wstr"
+                      length="70"
+                      name="NombreProducto" />
+                    <externalMetadataColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de origen de ADO NET].ExternalColumns[CategoriaProducto]"
+                      dataType="wstr"
+                      length="50"
+                      name="CategoriaProducto" />
+                    <externalMetadataColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de origen de ADO NET].ExternalColumns[Dimensiones]"
+                      dataType="wstr"
+                      length="25"
+                      name="Dimensiones" />
+                    <externalMetadataColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de origen de ADO NET].ExternalColumns[Descripcion]"
+                      dataType="nText"
+                      name="Descripcion" />
+                    <externalMetadataColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de origen de ADO NET].ExternalColumns[CantidadStock]"
+                      dataType="i2"
+                      name="CantidadStock" />
+                    <externalMetadataColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de origen de ADO NET].ExternalColumns[PrecioVenta]"
+                      dataType="numeric"
+                      name="PrecioVenta"
+                      precision="15"
+                      scale="2" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de error de origen de ADO NET]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de ADO NET">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de error de origen de ADO NET].Columns[ID_producto]"
+                      dataType="i4"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de error de origen de ADO NET].Columns[ID_producto]"
+                      name="ID_producto" />
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de error de origen de ADO NET].Columns[ID_producto_o]"
+                      dataType="i4"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de error de origen de ADO NET].Columns[ID_producto_o]"
+                      name="ID_producto_o" />
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de error de origen de ADO NET].Columns[CodigoProducto]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de error de origen de ADO NET].Columns[CodigoProducto]"
+                      name="CodigoProducto" />
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de error de origen de ADO NET].Columns[NombreProducto]"
+                      dataType="wstr"
+                      length="70"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de error de origen de ADO NET].Columns[NombreProducto]"
+                      name="NombreProducto" />
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de error de origen de ADO NET].Columns[CategoriaProducto]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de error de origen de ADO NET].Columns[CategoriaProducto]"
+                      name="CategoriaProducto" />
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de error de origen de ADO NET].Columns[Dimensiones]"
+                      dataType="wstr"
+                      length="25"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de error de origen de ADO NET].Columns[Dimensiones]"
+                      name="Dimensiones" />
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de error de origen de ADO NET].Columns[Descripcion]"
+                      dataType="nText"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de error de origen de ADO NET].Columns[Descripcion]"
+                      name="Descripcion" />
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de error de origen de ADO NET].Columns[CantidadStock]"
+                      dataType="i2"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de error de origen de ADO NET].Columns[CantidadStock]"
+                      name="CantidadStock" />
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de error de origen de ADO NET].Columns[PrecioVenta]"
+                      dataType="numeric"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de error de origen de ADO NET].Columns[PrecioVenta]"
+                      name="PrecioVenta"
+                      precision="15"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de error de origen de ADO NET].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de error de origen de ADO NET].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de error de origen de ADO NET].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de error de origen de ADO NET].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Consume datos de SQL Server, OLE DB, ODBC u Oracle mediante el correspondiente proveedor de datos de .NET Framework. Se usa una instrucción Transact-SQL para definir el conjunto de resultados. Por ejemplo, se extraen datos de SQL Server con el proveedor de datos de .NET Framework para SQL Server.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+              description="Consume datos de SQL Server, OLE DB, ODBC u Oracle mediante el correspondiente proveedor de datos de .NET Framework. Se usa una instrucción Transact-SQL para definir el conjunto de resultados. Por ejemplo, se extraen datos de SQL Server con el proveedor de datos de .NET Framework para SQL Server."
+              name="OrigenTbProductoStaging"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Especifica la instrucción SQL utilizada por el componente para extraer datos."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
+    p.ID_producto,
+    p.ID_producto_o,
+    p.CodigoProducto,
+    p.nombre AS NombreProducto,
+    cp.Desc_Categoria AS CategoriaProducto,
+    ISNULL(NULLIF(p.dimensiones, ''), 'N/A') AS Dimensiones,
+    ISNULL(NULLIF(p.descripcion, ''), 'N/A') AS Descripcion,
+    p.cantidad_en_stock AS CantidadStock,
+    p.precio_venta AS PrecioVenta
+FROM 
+    TbProducto p
+INNER JOIN 
+    TbCategoria_Producto cp ON p.Categoria = cp.Id_Categoria;</property>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si se debe permitir que columnas externas que no sean de cadenas se conviertan implícitamente en cadenas en las columnas de salida."
+                  name="AllowImplicitStringConversion">true</property>
+                <property
+                  dataType="System.String"
+                  description="Nombre de la tabla de la base de datos de origen."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especificar el modo de recuperar información de columnas externas"
+                  name="AccessMode"
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">2</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.DataReaderSourceAdapter</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Connections[IDbConnection]"
+                  connectionManagerID="{C0D7A864-BFFD-4B93-BB82-BDD620EDE567}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-4NV230H_SQLEXPRESS.StagingJardineria]"
+                  description="Administrador de conexiones administrado"
+                  name="IDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de origen de ADO NET]"
+                  name="Salida de origen de ADO NET">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de origen de ADO NET].Columns[ID_producto]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de origen de ADO NET].ExternalColumns[ID_producto]"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de origen de ADO NET].Columns[ID_producto]"
+                      name="ID_producto"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de origen de ADO NET].Columns[ID_producto_o]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de origen de ADO NET].ExternalColumns[ID_producto_o]"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de origen de ADO NET].Columns[ID_producto_o]"
+                      name="ID_producto_o"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de origen de ADO NET].Columns[CodigoProducto]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de origen de ADO NET].ExternalColumns[CodigoProducto]"
+                      length="15"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de origen de ADO NET].Columns[CodigoProducto]"
+                      name="CodigoProducto"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de origen de ADO NET].Columns[NombreProducto]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de origen de ADO NET].ExternalColumns[NombreProducto]"
+                      length="70"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de origen de ADO NET].Columns[NombreProducto]"
+                      name="NombreProducto"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de origen de ADO NET].Columns[CategoriaProducto]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de origen de ADO NET].ExternalColumns[CategoriaProducto]"
+                      length="50"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de origen de ADO NET].Columns[CategoriaProducto]"
+                      name="CategoriaProducto"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de origen de ADO NET].Columns[Dimensiones]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de origen de ADO NET].ExternalColumns[Dimensiones]"
+                      length="25"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de origen de ADO NET].Columns[Dimensiones]"
+                      name="Dimensiones"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de origen de ADO NET].Columns[Descripcion]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de origen de ADO NET].ExternalColumns[Descripcion]"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de origen de ADO NET].Columns[Descripcion]"
+                      name="Descripcion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de origen de ADO NET].Columns[CantidadStock]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de origen de ADO NET].ExternalColumns[CantidadStock]"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de origen de ADO NET].Columns[CantidadStock]"
+                      name="CantidadStock"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de origen de ADO NET].Columns[PrecioVenta]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de origen de ADO NET].ExternalColumns[PrecioVenta]"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de origen de ADO NET].Columns[PrecioVenta]"
+                      name="PrecioVenta"
+                      precision="15"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de origen de ADO NET].ExternalColumns[ID_producto]"
+                      dataType="i4"
+                      name="ID_producto" />
+                    <externalMetadataColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de origen de ADO NET].ExternalColumns[ID_producto_o]"
+                      dataType="i4"
+                      name="ID_producto_o" />
+                    <externalMetadataColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de origen de ADO NET].ExternalColumns[CodigoProducto]"
+                      dataType="wstr"
+                      length="15"
+                      name="CodigoProducto" />
+                    <externalMetadataColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de origen de ADO NET].ExternalColumns[NombreProducto]"
+                      dataType="wstr"
+                      length="70"
+                      name="NombreProducto" />
+                    <externalMetadataColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de origen de ADO NET].ExternalColumns[CategoriaProducto]"
+                      dataType="wstr"
+                      length="50"
+                      name="CategoriaProducto" />
+                    <externalMetadataColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de origen de ADO NET].ExternalColumns[Dimensiones]"
+                      dataType="wstr"
+                      length="25"
+                      name="Dimensiones" />
+                    <externalMetadataColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de origen de ADO NET].ExternalColumns[Descripcion]"
+                      dataType="nText"
+                      name="Descripcion" />
+                    <externalMetadataColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de origen de ADO NET].ExternalColumns[CantidadStock]"
+                      dataType="i2"
+                      name="CantidadStock" />
+                    <externalMetadataColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de origen de ADO NET].ExternalColumns[PrecioVenta]"
+                      dataType="numeric"
+                      name="PrecioVenta"
+                      precision="15"
+                      scale="2" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de error de origen de ADO NET]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de ADO NET">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de error de origen de ADO NET].Columns[ID_producto]"
+                      dataType="i4"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de error de origen de ADO NET].Columns[ID_producto]"
+                      name="ID_producto" />
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de error de origen de ADO NET].Columns[ID_producto_o]"
+                      dataType="i4"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de error de origen de ADO NET].Columns[ID_producto_o]"
+                      name="ID_producto_o" />
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de error de origen de ADO NET].Columns[CodigoProducto]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de error de origen de ADO NET].Columns[CodigoProducto]"
+                      name="CodigoProducto" />
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de error de origen de ADO NET].Columns[NombreProducto]"
+                      dataType="wstr"
+                      length="70"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de error de origen de ADO NET].Columns[NombreProducto]"
+                      name="NombreProducto" />
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de error de origen de ADO NET].Columns[CategoriaProducto]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de error de origen de ADO NET].Columns[CategoriaProducto]"
+                      name="CategoriaProducto" />
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de error de origen de ADO NET].Columns[Dimensiones]"
+                      dataType="wstr"
+                      length="25"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de error de origen de ADO NET].Columns[Dimensiones]"
+                      name="Dimensiones" />
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de error de origen de ADO NET].Columns[Descripcion]"
+                      dataType="nText"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de error de origen de ADO NET].Columns[Descripcion]"
+                      name="Descripcion" />
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de error de origen de ADO NET].Columns[CantidadStock]"
+                      dataType="i2"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de error de origen de ADO NET].Columns[CantidadStock]"
+                      name="CantidadStock" />
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de error de origen de ADO NET].Columns[PrecioVenta]"
+                      dataType="numeric"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de error de origen de ADO NET].Columns[PrecioVenta]"
+                      name="PrecioVenta"
+                      precision="15"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de error de origen de ADO NET].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de error de origen de ADO NET].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de error de origen de ADO NET].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de error de origen de ADO NET].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Transformacion_JardineriaStagingDIMProducto\RegistrosNuevosDIMProducto"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="RegistrosNuevosDIMProducto"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Transformacion_JardineriaStagingDIMProducto\RegistrosNuevosDIMProducto.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\RegistrosNuevosDIMProducto.Inputs[Conditional Split Input].Columns[ID_productoDIM]"
+                      cachedDataType="i4"
+                      cachedName="ID_productoDIM"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\Merge Join.Outputs[Merge Join Output].Columns[ID_productoDIM]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Transformacion_JardineriaStagingDIMProducto\RegistrosNuevosDIMProducto.Outputs[RegistrosNuevos]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="RegistrosNuevos"
+                  synchronousInputId="Package\Transformacion_JardineriaStagingDIMProducto\RegistrosNuevosDIMProducto.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">[ISNULL](#{Package\Transformacion_JardineriaStagingDIMProducto\Merge Join.Outputs[Merge Join Output].Columns[ID_productoDIM]})</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">ISNULL(ID_productoDIM)</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Transformacion_JardineriaStagingDIMProducto\RegistrosNuevosDIMProducto.Outputs[Conditional Split Default Output]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Conditional Split Default Output"
+                  synchronousInputId="Package\Transformacion_JardineriaStagingDIMProducto\RegistrosNuevosDIMProducto.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Transformacion_JardineriaStagingDIMProducto\RegistrosNuevosDIMProducto.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\Transformacion_JardineriaStagingDIMProducto\RegistrosNuevosDIMProducto.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\RegistrosNuevosDIMProducto.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\RegistrosNuevosDIMProducto.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\RegistrosNuevosDIMProducto.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\RegistrosNuevosDIMProducto.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Transformacion_JardineriaStagingDIMProducto\SortDIMProducto"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="SortDIMProducto"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Transformacion_JardineriaStagingDIMProducto\SortDIMProducto.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\SortDIMProducto.Inputs[Sort Input].Columns[ID_producto]"
+                      cachedDataType="i4"
+                      cachedName="ID_producto"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de origen de ADO NET].Columns[ID_producto]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\SortDIMProducto.Inputs[Sort Input].Columns[ID_producto_o]"
+                      cachedDataType="i4"
+                      cachedName="ID_producto_o"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de origen de ADO NET].Columns[ID_producto_o]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\SortDIMProducto.Inputs[Sort Input].Columns[CodigoProducto]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="CodigoProducto"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de origen de ADO NET].Columns[CodigoProducto]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\SortDIMProducto.Inputs[Sort Input].Columns[NombreProducto]"
+                      cachedDataType="wstr"
+                      cachedLength="70"
+                      cachedName="NombreProducto"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de origen de ADO NET].Columns[NombreProducto]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\SortDIMProducto.Inputs[Sort Input].Columns[CategoriaProducto]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="CategoriaProducto"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de origen de ADO NET].Columns[CategoriaProducto]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\SortDIMProducto.Inputs[Sort Input].Columns[Dimensiones]"
+                      cachedDataType="wstr"
+                      cachedLength="25"
+                      cachedName="Dimensiones"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de origen de ADO NET].Columns[Dimensiones]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\SortDIMProducto.Inputs[Sort Input].Columns[Descripcion]"
+                      cachedDataType="nText"
+                      cachedName="Descripcion"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de origen de ADO NET].Columns[Descripcion]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\SortDIMProducto.Inputs[Sort Input].Columns[CantidadStock]"
+                      cachedDataType="i2"
+                      cachedName="CantidadStock"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de origen de ADO NET].Columns[CantidadStock]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\SortDIMProducto.Inputs[Sort Input].Columns[PrecioVenta]"
+                      cachedDataType="numeric"
+                      cachedName="PrecioVenta"
+                      cachedPrecision="15"
+                      cachedScale="2"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de origen de ADO NET].Columns[PrecioVenta]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Transformacion_JardineriaStagingDIMProducto\SortDIMProducto.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\SortDIMProducto.Outputs[Sort Output].Columns[ID_producto]"
+                      dataType="i4"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\SortDIMProducto.Outputs[Sort Output].Columns[ID_producto]"
+                      name="ID_producto"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de origen de ADO NET].Columns[ID_producto]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\SortDIMProducto.Outputs[Sort Output].Columns[ID_producto_o]"
+                      dataType="i4"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\SortDIMProducto.Outputs[Sort Output].Columns[ID_producto_o]"
+                      name="ID_producto_o">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de origen de ADO NET].Columns[ID_producto_o]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\SortDIMProducto.Outputs[Sort Output].Columns[CodigoProducto]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\SortDIMProducto.Outputs[Sort Output].Columns[CodigoProducto]"
+                      name="CodigoProducto">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de origen de ADO NET].Columns[CodigoProducto]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\SortDIMProducto.Outputs[Sort Output].Columns[NombreProducto]"
+                      dataType="wstr"
+                      length="70"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\SortDIMProducto.Outputs[Sort Output].Columns[NombreProducto]"
+                      name="NombreProducto">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de origen de ADO NET].Columns[NombreProducto]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\SortDIMProducto.Outputs[Sort Output].Columns[CategoriaProducto]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\SortDIMProducto.Outputs[Sort Output].Columns[CategoriaProducto]"
+                      name="CategoriaProducto">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de origen de ADO NET].Columns[CategoriaProducto]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\SortDIMProducto.Outputs[Sort Output].Columns[Dimensiones]"
+                      dataType="wstr"
+                      length="25"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\SortDIMProducto.Outputs[Sort Output].Columns[Dimensiones]"
+                      name="Dimensiones">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de origen de ADO NET].Columns[Dimensiones]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\SortDIMProducto.Outputs[Sort Output].Columns[Descripcion]"
+                      dataType="nText"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\SortDIMProducto.Outputs[Sort Output].Columns[Descripcion]"
+                      name="Descripcion">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de origen de ADO NET].Columns[Descripcion]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\SortDIMProducto.Outputs[Sort Output].Columns[CantidadStock]"
+                      dataType="i2"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\SortDIMProducto.Outputs[Sort Output].Columns[CantidadStock]"
+                      name="CantidadStock">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de origen de ADO NET].Columns[CantidadStock]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\SortDIMProducto.Outputs[Sort Output].Columns[PrecioVenta]"
+                      dataType="numeric"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\SortDIMProducto.Outputs[Sort Output].Columns[PrecioVenta]"
+                      name="PrecioVenta"
+                      precision="15"
+                      scale="2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de origen de ADO NET].Columns[PrecioVenta]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Transformacion_JardineriaStagingDIMProducto\SortStProducto"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="SortStProducto"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Transformacion_JardineriaStagingDIMProducto\SortStProducto.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\SortStProducto.Inputs[Sort Input].Columns[ID_producto]"
+                      cachedDataType="i4"
+                      cachedName="ID_producto"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de origen de ADO NET].Columns[ID_producto]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\SortStProducto.Inputs[Sort Input].Columns[ID_producto_o]"
+                      cachedDataType="i4"
+                      cachedName="ID_producto_o"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de origen de ADO NET].Columns[ID_producto_o]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\SortStProducto.Inputs[Sort Input].Columns[CodigoProducto]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="CodigoProducto"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de origen de ADO NET].Columns[CodigoProducto]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\SortStProducto.Inputs[Sort Input].Columns[NombreProducto]"
+                      cachedDataType="wstr"
+                      cachedLength="70"
+                      cachedName="NombreProducto"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de origen de ADO NET].Columns[NombreProducto]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\SortStProducto.Inputs[Sort Input].Columns[CategoriaProducto]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="CategoriaProducto"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de origen de ADO NET].Columns[CategoriaProducto]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\SortStProducto.Inputs[Sort Input].Columns[Dimensiones]"
+                      cachedDataType="wstr"
+                      cachedLength="25"
+                      cachedName="Dimensiones"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de origen de ADO NET].Columns[Dimensiones]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\SortStProducto.Inputs[Sort Input].Columns[Descripcion]"
+                      cachedDataType="nText"
+                      cachedName="Descripcion"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de origen de ADO NET].Columns[Descripcion]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\SortStProducto.Inputs[Sort Input].Columns[CantidadStock]"
+                      cachedDataType="i2"
+                      cachedName="CantidadStock"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de origen de ADO NET].Columns[CantidadStock]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\SortStProducto.Inputs[Sort Input].Columns[PrecioVenta]"
+                      cachedDataType="numeric"
+                      cachedName="PrecioVenta"
+                      cachedPrecision="15"
+                      cachedScale="2"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de origen de ADO NET].Columns[PrecioVenta]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Transformacion_JardineriaStagingDIMProducto\SortStProducto.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\SortStProducto.Outputs[Sort Output].Columns[ID_producto]"
+                      dataType="i4"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\SortStProducto.Outputs[Sort Output].Columns[ID_producto]"
+                      name="ID_producto"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de origen de ADO NET].Columns[ID_producto]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\SortStProducto.Outputs[Sort Output].Columns[ID_producto_o]"
+                      dataType="i4"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\SortStProducto.Outputs[Sort Output].Columns[ID_producto_o]"
+                      name="ID_producto_o">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de origen de ADO NET].Columns[ID_producto_o]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\SortStProducto.Outputs[Sort Output].Columns[CodigoProducto]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\SortStProducto.Outputs[Sort Output].Columns[CodigoProducto]"
+                      name="CodigoProducto">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de origen de ADO NET].Columns[CodigoProducto]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\SortStProducto.Outputs[Sort Output].Columns[NombreProducto]"
+                      dataType="wstr"
+                      length="70"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\SortStProducto.Outputs[Sort Output].Columns[NombreProducto]"
+                      name="NombreProducto">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de origen de ADO NET].Columns[NombreProducto]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\SortStProducto.Outputs[Sort Output].Columns[CategoriaProducto]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\SortStProducto.Outputs[Sort Output].Columns[CategoriaProducto]"
+                      name="CategoriaProducto">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de origen de ADO NET].Columns[CategoriaProducto]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\SortStProducto.Outputs[Sort Output].Columns[Dimensiones]"
+                      dataType="wstr"
+                      length="25"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\SortStProducto.Outputs[Sort Output].Columns[Dimensiones]"
+                      name="Dimensiones">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de origen de ADO NET].Columns[Dimensiones]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\SortStProducto.Outputs[Sort Output].Columns[Descripcion]"
+                      dataType="nText"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\SortStProducto.Outputs[Sort Output].Columns[Descripcion]"
+                      name="Descripcion">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de origen de ADO NET].Columns[Descripcion]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\SortStProducto.Outputs[Sort Output].Columns[CantidadStock]"
+                      dataType="i2"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\SortStProducto.Outputs[Sort Output].Columns[CantidadStock]"
+                      name="CantidadStock">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de origen de ADO NET].Columns[CantidadStock]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingDIMProducto\SortStProducto.Outputs[Sort Output].Columns[PrecioVenta]"
+                      dataType="numeric"
+                      lineageId="Package\Transformacion_JardineriaStagingDIMProducto\SortStProducto.Outputs[Sort Output].Columns[PrecioVenta]"
+                      name="PrecioVenta"
+                      precision="15"
+                      scale="2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de origen de ADO NET].Columns[PrecioVenta]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Transformacion_JardineriaStagingDIMProducto.Paths[Merge Join Output]"
+              endId="Package\Transformacion_JardineriaStagingDIMProducto\RegistrosNuevosDIMProducto.Inputs[Conditional Split Input]"
+              name="Merge Join Output"
+              startId="Package\Transformacion_JardineriaStagingDIMProducto\Merge Join.Outputs[Merge Join Output]" />
+            <path
+              refId="Package\Transformacion_JardineriaStagingDIMProducto.Paths[RegistrosNuevos]"
+              endId="Package\Transformacion_JardineriaStagingDIMProducto\DestinoDIMProducto.Inputs[Entrada de destino de ADO NET]"
+              name="RegistrosNuevos"
+              startId="Package\Transformacion_JardineriaStagingDIMProducto\RegistrosNuevosDIMProducto.Outputs[RegistrosNuevos]" />
+            <path
+              refId="Package\Transformacion_JardineriaStagingDIMProducto.Paths[Salida de origen de ADO NET]"
+              endId="Package\Transformacion_JardineriaStagingDIMProducto\SortDIMProducto.Inputs[Sort Input]"
+              name="Salida de origen de ADO NET"
+              startId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto.Outputs[Salida de origen de ADO NET]" />
+            <path
+              refId="Package\Transformacion_JardineriaStagingDIMProducto.Paths[Salida de origen de ADO NET1]"
+              endId="Package\Transformacion_JardineriaStagingDIMProducto\SortStProducto.Inputs[Sort Input]"
+              name="Salida de origen de ADO NET"
+              startId="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging.Outputs[Salida de origen de ADO NET]" />
+            <path
+              refId="Package\Transformacion_JardineriaStagingDIMProducto.Paths[Sort Output]"
+              endId="Package\Transformacion_JardineriaStagingDIMProducto\Merge Join.Inputs[Merge Join Left Input]"
+              name="Sort Output"
+              startId="Package\Transformacion_JardineriaStagingDIMProducto\SortStProducto.Outputs[Sort Output]" />
+            <path
+              refId="Package\Transformacion_JardineriaStagingDIMProducto.Paths[Sort Output1]"
+              endId="Package\Transformacion_JardineriaStagingDIMProducto\Merge Join.Inputs[Merge Join Right Input]"
+              name="Sort Output"
+              startId="Package\Transformacion_JardineriaStagingDIMProducto\SortDIMProducto.Outputs[Sort Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
       DTS:refId="Package\Transformacion_JardineriaStagingDIMTiempo"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
@@ -5863,6 +7589,14 @@ ORDER BY ID_cliente</property>
       DTS:LogicalAnd="True"
       DTS:ObjectName="Restricción 2"
       DTS:To="Package\Transformacion_JardineriaStagingDIMCliente" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{4E6C598F-FB30-4531-A53A-F6959120F249}"
+      DTS:From="Package\Transformacion_JardineriaStagingDIMCliente"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción 3"
+      DTS:To="Package\Transformacion_JardineriaStagingDIMProducto" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
@@ -5875,45 +7609,41 @@ ORDER BY ID_cliente</property>
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="185,42"
           Id="Package\Extracción_Jardineria"
-          TopLeft="123,191" />
+          TopLeft="140,92" />
         <NodeLayout
           Size="228,42"
           Id="Package\Limpiar_BD_StagingJardineria"
-          TopLeft="127,73" />
+          TopLeft="124,17" />
+        <NodeLayout
+          Size="302,42"
+          Id="Package\Transformacion_JardineriaStagingDIMCliente"
+          TopLeft="83,224" />
+        <NodeLayout
+          Size="312,42"
+          Id="Package\Transformacion_JardineriaStagingDIMProducto"
+          TopLeft="78,296" />
         <NodeLayout
           Size="304,42"
           Id="Package\Transformacion_JardineriaStagingDIMTiempo"
-          TopLeft="332,190" />
+          TopLeft="88,159" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción]"
-          TopLeft="241,115">
+          TopLeft="235.25,59">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-25.5,76"
+              EndConnector="0,33"
               Start="0,0"
-              End="-25.5,68.5">
+              End="0,25.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,34" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,34"
-                    Point2="0,38"
-                    Point3="-4,38" />
-                  <mssgle:LineSegment
-                    End="-21.5,38" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-21.5,38"
-                    Point2="-25.5,38"
-                    Point3="-25.5,42" />
-                  <mssgle:LineSegment
-                    End="-25.5,68.5" />
+                    End="0,25.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5922,24 +7652,20 @@ ORDER BY ID_cliente</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="302,42"
-          Id="Package\Transformacion_JardineriaStagingDIMCliente"
-          TopLeft="685,190" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 1]"
-          TopLeft="308,211.5">
+          TopLeft="236.25,134">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="24,0"
+              EndConnector="0,25"
               Start="0,0"
-              End="16.5,0">
+              End="0,17.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="16.5,0" />
+                    End="0,17.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5950,18 +7676,40 @@ ORDER BY ID_cliente</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 2]"
-          TopLeft="636,211">
+          TopLeft="237,201">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="49,0"
+              EndConnector="0,23"
               Start="0,0"
-              End="41.5,0">
+              End="0,15.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="41.5,0" />
+                    End="0,15.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 3]"
+          TopLeft="234,266">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,30"
+              Start="0,0"
+              End="0,22.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5977,35 +7725,27 @@ ORDER BY ID_cliente</property>
     design-time-name="Package\Extracción_Jardineria">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="210,42"
-          Id="Package\Extracción_Jardineria\Destino_TbDetalle_Pedido"
-          TopLeft="532,204" />
-        <NodeLayout
-          Size="247,42"
-          Id="Package\Extracción_Jardineria\Origen_Detalle_Pedido_Jardineria"
-          TopLeft="554,109" />
-        <NodeLayout
-          Size="170,42"
-          Id="Package\Extracción_Jardineria\Destino_TbPedido"
-          TopLeft="764,206" />
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="198,42"
           Id="Package\Extracción_Jardineria\Origen_Pago_Jardineria"
           TopLeft="1247,113" />
         <NodeLayout
+          Size="247,42"
+          Id="Package\Extracción_Jardineria\Origen_Detalle_Pedido_Jardineria"
+          TopLeft="554,109" />
+        <NodeLayout
           Size="207,42"
           Id="Package\Extracción_Jardineria\Origen_Pedido_Jardineria"
           TopLeft="813,109" />
         <NodeLayout
-          Size="207,42"
-          Id="Package\Extracción_Jardineria\Origen_Cliente_Jardineria"
-          TopLeft="1030,112" />
+          Size="214,42"
+          Id="Package\Extracción_Jardineria\Origen_TPedido_Jardineria"
+          TopLeft="49,299" />
         <NodeLayout
-          Size="179,42"
-          Id="Package\Extracción_Jardineria\Destino_TbProducto"
-          TopLeft="320,203" />
+          Size="170,42"
+          Id="Package\Extracción_Jardineria\Destino_TbPedido"
+          TopLeft="764,206" />
         <NodeLayout
           Size="217,42"
           Id="Package\Extracción_Jardineria\Origen_Producto_Jardineria"
@@ -6015,13 +7755,105 @@ ORDER BY ID_cliente</property>
           Id="Package\Extracción_Jardineria\Origen_Categoria_Producto_Jardineria"
           TopLeft="32,101" />
         <NodeLayout
+          Size="170,42"
+          Id="Package\Extracción_Jardineria\Destino_TbCliente"
+          TopLeft="956,204" />
+        <NodeLayout
+          Size="210,42"
+          Id="Package\Extracción_Jardineria\Destino_TbDetalle_Pedido"
+          TopLeft="532,204" />
+        <NodeLayout
+          Size="179,42"
+          Id="Package\Extracción_Jardineria\Destino_TbProducto"
+          TopLeft="320,203" />
+        <NodeLayout
+          Size="172,42"
+          Id="Package\Extracción_Jardineria\Destino_TbTiempo"
+          TopLeft="62,377" />
+        <NodeLayout
           Size="233,42"
           Id="Package\Extracción_Jardineria\Destino_TbCategoria_Producto"
           TopLeft="42,207" />
         <NodeLayout
+          Size="207,42"
+          Id="Package\Extracción_Jardineria\Origen_Cliente_Jardineria"
+          TopLeft="1030,112" />
+        <NodeLayout
           Size="161,42"
           Id="Package\Extracción_Jardineria\Destino_TbPago"
           TopLeft="1149,207" />
+        <EdgeLayout
+          Id="Package\Extracción_Jardineria.Paths[Salida de origen de ADO NET6]"
+          TopLeft="1133.5,154">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-92.5,50"
+              Start="0,0"
+              End="-92.5,42.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21"
+                    Point2="0,25"
+                    Point3="-4,25" />
+                  <mssgle:LineSegment
+                    End="-88.5,25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-88.5,25"
+                    Point2="-92.5,25"
+                    Point3="-92.5,29" />
+                  <mssgle:LineSegment
+                    End="-92.5,42.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Extracción_Jardineria.Paths[Salida de origen de ADO NET5]"
+          TopLeft="156,341">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-8,36"
+              Start="0,0"
+              End="-8,28.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14"
+                    Point2="0,18"
+                    Point3="-4,18" />
+                  <mssgle:LineSegment
+                    End="-4,18" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-4,18"
+                    Point2="-8,18"
+                    Point3="-8,22" />
+                  <mssgle:LineSegment
+                    End="-8,28.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Extracción_Jardineria.Paths[Salida de origen de ADO NET4]"
           TopLeft="1346,155">
@@ -6053,7 +7885,9 @@ ORDER BY ID_cliente</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -6087,7 +7921,9 @@ ORDER BY ID_cliente</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -6121,7 +7957,9 @@ ORDER BY ID_cliente</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -6155,7 +7993,9 @@ ORDER BY ID_cliente</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -6189,116 +8029,14 @@ ORDER BY ID_cliente</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="214,42"
-          Id="Package\Extracción_Jardineria\Origen_TPedido_Jardineria"
-          TopLeft="49,299" />
-        <NodeLayout
-          Size="172,42"
-          Id="Package\Extracción_Jardineria\Destino_TbTiempo"
-          TopLeft="62,377" />
-        <EdgeLayout
-          Id="Package\Extracción_Jardineria.Paths[Salida de origen de ADO NET5]"
-          TopLeft="156,341">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-8,36"
-              Start="0,0"
-              End="-8,28.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,14" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,14"
-                    Point2="0,18"
-                    Point3="-4,18" />
-                  <mssgle:LineSegment
-                    End="-4,18" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-4,18"
-                    Point2="-8,18"
-                    Point3="-8,22" />
-                  <mssgle:LineSegment
-                    End="-8,28.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="170,42"
-          Id="Package\Extracción_Jardineria\Destino_TbCliente"
-          TopLeft="956,204" />
-        <EdgeLayout
-          Id="Package\Extracción_Jardineria.Paths[Salida de origen de ADO NET6]"
-          TopLeft="1133.5,154">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-92.5,50"
-              Start="0,0"
-              End="-92.5,42.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,21" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,21"
-                    Point2="0,25"
-                    Point3="-4,25" />
-                  <mssgle:LineSegment
-                    End="-88.5,25" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-88.5,25"
-                    Point2="-92.5,25"
-                    Point3="-92.5,29" />
-                  <mssgle:LineSegment
-                    End="-92.5,42.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Extracción_Jardineria\Destino_TbDetalle_Pedido">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Extracción_Jardineria\Origen_Cliente_Jardineria">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Extracción_Jardineria\Destino_TbPedido">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Extracción_Jardineria\Origen_Pago_Jardineria">
     <Properties>
@@ -6324,7 +8062,23 @@ ORDER BY ID_cliente</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Extracción_Jardineria\Destino_TbPago">
+    design-time-name="Package\Extracción_Jardineria\Origen_TPedido_Jardineria">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extracción_Jardineria\Destino_TbPedido">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extracción_Jardineria\Origen_Producto_Jardineria">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -6340,7 +8094,31 @@ ORDER BY ID_cliente</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
+    design-time-name="Package\Extracción_Jardineria\Destino_TbCliente">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extracción_Jardineria\Destino_TbDetalle_Pedido">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\Extracción_Jardineria\Destino_TbProducto">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extracción_Jardineria\Destino_TbTiempo">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -6356,7 +8134,521 @@ ORDER BY ID_cliente</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Extracción_Jardineria\Origen_Producto_Jardineria">
+    design-time-name="Package\Extracción_Jardineria\Origen_Cliente_Jardineria">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extracción_Jardineria\Destino_TbPago">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Transformacion_JardineriaStagingDIMCliente">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="133,42"
+          Id="Package\Transformacion_JardineriaStagingDIMCliente\Merge Join"
+          TopLeft="390.954545454545,256.409090909091" />
+        <NodeLayout
+          Size="197,42"
+          Id="Package\Transformacion_JardineriaStagingDIMCliente\OrigenTbClienteStaging"
+          TopLeft="92,58" />
+        <NodeLayout
+          Size="217,42"
+          Id="Package\Transformacion_JardineriaStagingDIMCliente\NuevosRegistrosDIMCliente"
+          TopLeft="360,347.272727272727" />
+        <NodeLayout
+          Size="144,42"
+          Id="Package\Transformacion_JardineriaStagingDIMCliente\SortStCliente"
+          TopLeft="206,170" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Transformacion_JardineriaStagingDIMCliente\DestinoDIMCliente"
+          TopLeft="389.636363636364,454.181818181818" />
+        <NodeLayout
+          Size="167,42"
+          Id="Package\Transformacion_JardineriaStagingDIMCliente\OrigenDIMCliente"
+          TopLeft="476,59" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Transformacion_JardineriaStagingDIMCliente\SortDIMCliente"
+          TopLeft="536,167" />
+        <EdgeLayout
+          Id="Package\Transformacion_JardineriaStagingDIMCliente.Paths[Sort Output1]"
+          TopLeft="613,209">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-134.712121212121,47.4090909090909"
+              Start="0,0"
+              End="-134.712121212121,39.9090909090909">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.1073213562069" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.1073213562069"
+                    Point2="0,28.1073213562069"
+                    Point3="-4,28.1073213562069" />
+                  <mssgle:LineSegment
+                    End="-130.712121212121,28.1073213562069" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-130.712121212121,28.1073213562069"
+                    Point2="-134.712121212121,28.1073213562069"
+                    Point3="-134.712121212121,32.1073213562069" />
+                  <mssgle:LineSegment
+                    End="-134.712121212121,39.9090909090909" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transformacion_JardineriaStagingDIMCliente.Paths[Sort Output]"
+          TopLeft="278,212">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="179.454545454545,44.4090909090909"
+              Start="0,0"
+              End="179.454545454545,36.9090909090909">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.2045454545454" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.2045454545454"
+                    Point2="0,22.2045454545454"
+                    Point3="4,22.2045454545454" />
+                  <mssgle:LineSegment
+                    End="175.454545454545,22.2045454545454" />
+                  <mssgle:CubicBezierSegment
+                    Point1="175.454545454545,22.2045454545454"
+                    Point2="179.454545454545,22.2045454545454"
+                    Point3="179.454545454545,26.2045454545454" />
+                  <mssgle:LineSegment
+                    End="179.454545454545,36.9090909090909" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transformacion_JardineriaStagingDIMCliente.Paths[Salida de origen de ADO NET1]"
+          TopLeft="559.5,101">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="53.5,66"
+              Start="0,0"
+              End="53.5,58.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29"
+                    Point2="0,33"
+                    Point3="4,33" />
+                  <mssgle:LineSegment
+                    End="49.5,33" />
+                  <mssgle:CubicBezierSegment
+                    Point1="49.5,33"
+                    Point2="53.5,33"
+                    Point3="53.5,37" />
+                  <mssgle:LineSegment
+                    End="53.5,58.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transformacion_JardineriaStagingDIMCliente.Paths[Salida de origen de ADO NET]"
+          TopLeft="190.5,100">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="87.5,70"
+              Start="0,0"
+              End="87.5,62.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31"
+                    Point2="0,35"
+                    Point3="4,35" />
+                  <mssgle:LineSegment
+                    End="83.5,35" />
+                  <mssgle:CubicBezierSegment
+                    Point1="83.5,35"
+                    Point2="87.5,35"
+                    Point3="87.5,39" />
+                  <mssgle:LineSegment
+                    End="87.5,62.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transformacion_JardineriaStagingDIMCliente.Paths[RegistrosNuevos]"
+          TopLeft="471.818181818182,389.272727272727">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,64.9090909090909"
+              Start="0,0"
+              End="0,57.4090909090909">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,57.4090909090909" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-37.017578125,23.0121626420455,74.03515625,11.384765625"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transformacion_JardineriaStagingDIMCliente.Paths[Merge Join Output]"
+          TopLeft="457.454545454545,298.409090909091">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="11.0454545454546,48.8636363636364"
+              Start="0,0"
+              End="11.0454545454546,41.3636363636364">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.4318181818182" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.4318181818182"
+                    Point2="0,24.4318181818182"
+                    Point3="4,24.4318181818182" />
+                  <mssgle:LineSegment
+                    End="7.04545454545456,24.4318181818182" />
+                  <mssgle:CubicBezierSegment
+                    Point1="7.04545454545456,24.4318181818182"
+                    Point2="11.0454545454546,24.4318181818182"
+                    Point3="11.0454545454546,28.4318181818182" />
+                  <mssgle:LineSegment
+                    End="11.0454545454546,41.3636363636364" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Transformacion_JardineriaStagingDIMCliente\OrigenTbClienteStaging">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Transformacion_JardineriaStagingDIMCliente\DestinoDIMCliente">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Transformacion_JardineriaStagingDIMCliente\OrigenDIMCliente">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Transformacion_JardineriaStagingDIMProducto">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="181,42"
+          Id="Package\Transformacion_JardineriaStagingDIMProducto\DestinoDIMProducto"
+          TopLeft="293,414" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Transformacion_JardineriaStagingDIMProducto\SortDIMProducto"
+          TopLeft="449,165" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Transformacion_JardineriaStagingDIMProducto\SortStProducto"
+          TopLeft="189.5,149.5" />
+        <NodeLayout
+          Size="206,42"
+          Id="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging"
+          TopLeft="177,73" />
+        <NodeLayout
+          Size="176,42"
+          Id="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto"
+          TopLeft="452,79" />
+        <NodeLayout
+          Size="227,42"
+          Id="Package\Transformacion_JardineriaStagingDIMProducto\RegistrosNuevosDIMProducto"
+          TopLeft="270,340" />
+        <NodeLayout
+          Size="133,42"
+          Id="Package\Transformacion_JardineriaStagingDIMProducto\Merge Join"
+          TopLeft="319,248" />
+        <EdgeLayout
+          Id="Package\Transformacion_JardineriaStagingDIMProducto.Paths[Sort Output]"
+          TopLeft="266.5,191.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="98.1666666666667,56.5"
+              Start="0,0"
+              End="98.1666666666667,49">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.4970282317979" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.4970282317979"
+                    Point2="0,33.4970282317979"
+                    Point3="4,33.4970282317979" />
+                  <mssgle:LineSegment
+                    End="94.1666666666667,33.4970282317979" />
+                  <mssgle:CubicBezierSegment
+                    Point1="94.1666666666667,33.4970282317979"
+                    Point2="98.1666666666667,33.4970282317979"
+                    Point3="98.1666666666667,37.4970282317979" />
+                  <mssgle:LineSegment
+                    End="98.1666666666667,49" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transformacion_JardineriaStagingDIMProducto.Paths[Salida de origen de ADO NET]"
+          TopLeft="540,121">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-9.5,44"
+              Start="0,0"
+              End="-9.5,36.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18"
+                    Point2="0,22"
+                    Point3="-4,22" />
+                  <mssgle:LineSegment
+                    End="-5.5,22" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-5.5,22"
+                    Point2="-9.5,22"
+                    Point3="-9.5,26" />
+                  <mssgle:LineSegment
+                    End="-9.5,36.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transformacion_JardineriaStagingDIMProducto.Paths[Merge Join Output]"
+          TopLeft="384.5,290">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,50"
+              Start="0,0"
+              End="0,42.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transformacion_JardineriaStagingDIMProducto.Paths[Sort Output1]"
+          TopLeft="530.5,207">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-124.166666666667,41"
+              Start="0,0"
+              End="-124.166666666667,33.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.3075780089153" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.3075780089153"
+                    Point2="0,24.3075780089153"
+                    Point3="-4,24.3075780089153" />
+                  <mssgle:LineSegment
+                    End="-120.166666666667,24.3075780089153" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-120.166666666667,24.3075780089153"
+                    Point2="-124.166666666667,24.3075780089153"
+                    Point3="-124.166666666667,28.3075780089153" />
+                  <mssgle:LineSegment
+                    End="-124.166666666667,33.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transformacion_JardineriaStagingDIMProducto.Paths[Salida de origen de ADO NET1]"
+          TopLeft="280,115">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-13.5,34.5"
+              Start="0,0"
+              End="-13.5,27">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.25"
+                    Point2="0,17.25"
+                    Point3="-4,17.25" />
+                  <mssgle:LineSegment
+                    End="-9.5,17.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-9.5,17.25"
+                    Point2="-13.5,17.25"
+                    Point3="-13.5,21.25" />
+                  <mssgle:LineSegment
+                    End="-13.5,27" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transformacion_JardineriaStagingDIMProducto.Paths[RegistrosNuevos]"
+          TopLeft="383.5,382">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,32"
+              Start="0,0"
+              End="0,24.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-37.017578125,6.5576171875,74.03515625,11.384765625"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Transformacion_JardineriaStagingDIMProducto\DestinoDIMProducto">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -6369,39 +8661,63 @@ ORDER BY ID_cliente</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
+          Size="189,42"
+          Id="Package\Transformacion_JardineriaStagingDIMTiempo\TansformacionTiempo"
+          TopLeft="74,133" />
+        <NodeLayout
           Size="197,42"
           Id="Package\Transformacion_JardineriaStagingDIMTiempo\OrigenTbPedidoStaging"
           TopLeft="58,53" />
         <NodeLayout
-          Size="189,42"
-          Id="Package\Transformacion_JardineriaStagingDIMTiempo\TansformacionTiempo"
-          TopLeft="74,133" />
+          Size="133,42"
+          Id="Package\Transformacion_JardineriaStagingDIMTiempo\Merge Join"
+          TopLeft="338,267" />
+        <NodeLayout
+          Size="146,42"
+          Id="Package\Transformacion_JardineriaStagingDIMTiempo\SortStTiempo"
+          TopLeft="131.5,213.5" />
+        <NodeLayout
+          Size="219,42"
+          Id="Package\Transformacion_JardineriaStagingDIMTiempo\NuevosRegistrosDimTiempo"
+          TopLeft="302,347" />
+        <NodeLayout
+          Size="156,42"
+          Id="Package\Transformacion_JardineriaStagingDIMTiempo\SortDIMTiempo"
+          TopLeft="381,141" />
+        <NodeLayout
+          Size="169,42"
+          Id="Package\Transformacion_JardineriaStagingDIMTiempo\OrigenDIMTiempo"
+          TopLeft="343,46" />
+        <NodeLayout
+          Size="173,42"
+          Id="Package\Transformacion_JardineriaStagingDIMTiempo\DestinoDIMTiempo"
+          TopLeft="325,439" />
         <EdgeLayout
-          Id="Package\Transformacion_JardineriaStagingDIMTiempo.Paths[Salida de origen de ADO NET]"
-          TopLeft="156.5,95">
+          Id="Package\Transformacion_JardineriaStagingDIMTiempo.Paths[Sort Output1]"
+          TopLeft="459,183">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="12,38"
+              EndConnector="-54.5,84"
               Start="0,0"
-              End="12,30.5">
+              End="-54.5,76.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,15" />
+                    End="0,38" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,15"
-                    Point2="0,19"
-                    Point3="4,19" />
+                    Point1="0,38"
+                    Point2="0,42"
+                    Point3="-4,42" />
                   <mssgle:LineSegment
-                    End="8,19" />
+                    End="-50.5,42" />
                   <mssgle:CubicBezierSegment
-                    Point1="8,19"
-                    Point2="12,19"
-                    Point3="12,23" />
+                    Point1="-50.5,42"
+                    Point2="-54.5,42"
+                    Point3="-54.5,46" />
                   <mssgle:LineSegment
-                    End="12,30.5" />
+                    End="-54.5,76.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6410,48 +8726,32 @@ ORDER BY ID_cliente</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="173,42"
-          Id="Package\Transformacion_JardineriaStagingDIMTiempo\DestinoDIMTiempo"
-          TopLeft="325,439" />
-        <NodeLayout
-          Size="169,42"
-          Id="Package\Transformacion_JardineriaStagingDIMTiempo\OrigenDIMTiempo"
-          TopLeft="343,46" />
-        <NodeLayout
-          Size="146,42"
-          Id="Package\Transformacion_JardineriaStagingDIMTiempo\SortStTiempo"
-          TopLeft="131.5,213.5" />
-        <NodeLayout
-          Size="156,42"
-          Id="Package\Transformacion_JardineriaStagingDIMTiempo\SortDIMTiempo"
-          TopLeft="381,141" />
         <EdgeLayout
-          Id="Package\Transformacion_JardineriaStagingDIMTiempo.Paths[Derived Column Output]"
-          TopLeft="168.5,175">
+          Id="Package\Transformacion_JardineriaStagingDIMTiempo.Paths[Sort Output]"
+          TopLeft="277.5,234.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="36,38.5"
+              EndConnector="60.5,53.5"
               Start="0,0"
-              End="36,31">
+              End="53,53.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,15.25" />
+                    End="26.25,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,15.25"
-                    Point2="0,19.25"
-                    Point3="4,19.25" />
+                    Point1="26.25,0"
+                    Point2="30.25,0"
+                    Point3="30.25,4" />
                   <mssgle:LineSegment
-                    End="32,19.25" />
+                    End="30.25,49.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="32,19.25"
-                    Point2="36,19.25"
-                    Point3="36,23.25" />
+                    Point1="30.25,49.5"
+                    Point2="30.25,53.5"
+                    Point3="34.25,53.5" />
                   <mssgle:LineSegment
-                    End="36,31" />
+                    End="53,53.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6494,96 +8794,32 @@ ORDER BY ID_cliente</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="133,42"
-          Id="Package\Transformacion_JardineriaStagingDIMTiempo\Merge Join"
-          TopLeft="338,267" />
         <EdgeLayout
-          Id="Package\Transformacion_JardineriaStagingDIMTiempo.Paths[Sort Output]"
-          TopLeft="277.5,234.5">
+          Id="Package\Transformacion_JardineriaStagingDIMTiempo.Paths[Salida de origen de ADO NET]"
+          TopLeft="156.5,95">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="60.5,53.5"
+              EndConnector="12,38"
               Start="0,0"
-              End="53,53.5">
+              End="12,30.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="26.25,0" />
+                    End="0,15" />
                   <mssgle:CubicBezierSegment
-                    Point1="26.25,0"
-                    Point2="30.25,0"
-                    Point3="30.25,4" />
+                    Point1="0,15"
+                    Point2="0,19"
+                    Point3="4,19" />
                   <mssgle:LineSegment
-                    End="30.25,49.5" />
+                    End="8,19" />
                   <mssgle:CubicBezierSegment
-                    Point1="30.25,49.5"
-                    Point2="30.25,53.5"
-                    Point3="34.25,53.5" />
+                    Point1="8,19"
+                    Point2="12,19"
+                    Point3="12,23" />
                   <mssgle:LineSegment
-                    End="53,53.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Transformacion_JardineriaStagingDIMTiempo.Paths[Sort Output1]"
-          TopLeft="459,183">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-54.5,84"
-              Start="0,0"
-              End="-54.5,76.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,38" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,38"
-                    Point2="0,42"
-                    Point3="-4,42" />
-                  <mssgle:LineSegment
-                    End="-50.5,42" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-50.5,42"
-                    Point2="-54.5,42"
-                    Point3="-54.5,46" />
-                  <mssgle:LineSegment
-                    End="-54.5,76.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="219,42"
-          Id="Package\Transformacion_JardineriaStagingDIMTiempo\NuevosRegistrosDimTiempo"
-          TopLeft="302,347" />
-        <EdgeLayout
-          Id="Package\Transformacion_JardineriaStagingDIMTiempo.Paths[Merge Join Output]"
-          TopLeft="408,309">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,38"
-              Start="0,0"
-              End="0,30.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,30.5" />
+                    End="12,30.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6616,35 +8852,67 @@ ORDER BY ID_cliente</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transformacion_JardineriaStagingDIMTiempo.Paths[Merge Join Output]"
+          TopLeft="408,309">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,38"
+              Start="0,0"
+              End="0,30.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transformacion_JardineriaStagingDIMTiempo.Paths[Derived Column Output]"
+          TopLeft="168.5,175">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="36,38.5"
+              Start="0,0"
+              End="36,31">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15.25"
+                    Point2="0,19.25"
+                    Point3="4,19.25" />
+                  <mssgle:LineSegment
+                    End="32,19.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="32,19.25"
+                    Point2="36,19.25"
+                    Point3="36,23.25" />
+                  <mssgle:LineSegment
+                    End="36,31" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
     design-time-name="Package\Transformacion_JardineriaStagingDIMTiempo\OrigenTbPedidoStaging">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Extracción_Jardineria\Origen_TPedido_Jardineria">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Extracción_Jardineria\Destino_TbTiempo">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Transformacion_JardineriaStagingDIMTiempo\DestinoDIMTiempo">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -6659,262 +8927,8 @@ ORDER BY ID_cliente</property>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\Transformacion_JardineriaStagingDIMCliente">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="197,42"
-          Id="Package\Transformacion_JardineriaStagingDIMCliente\OrigenTbClienteStaging"
-          TopLeft="92,58" />
-        <NodeLayout
-          Size="171,42"
-          Id="Package\Transformacion_JardineriaStagingDIMCliente\DestinoDIMCliente"
-          TopLeft="389.636363636364,454.181818181818" />
-        <NodeLayout
-          Size="167,42"
-          Id="Package\Transformacion_JardineriaStagingDIMCliente\OrigenDIMCliente"
-          TopLeft="476,59" />
-        <NodeLayout
-          Size="144,42"
-          Id="Package\Transformacion_JardineriaStagingDIMCliente\SortStCliente"
-          TopLeft="206,170" />
-        <NodeLayout
-          Size="154,42"
-          Id="Package\Transformacion_JardineriaStagingDIMCliente\SortDIMCliente"
-          TopLeft="536,167" />
-        <EdgeLayout
-          Id="Package\Transformacion_JardineriaStagingDIMCliente.Paths[Salida de origen de ADO NET]"
-          TopLeft="190.5,100">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="87.5,70"
-              Start="0,0"
-              End="87.5,62.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,31" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,31"
-                    Point2="0,35"
-                    Point3="4,35" />
-                  <mssgle:LineSegment
-                    End="83.5,35" />
-                  <mssgle:CubicBezierSegment
-                    Point1="83.5,35"
-                    Point2="87.5,35"
-                    Point3="87.5,39" />
-                  <mssgle:LineSegment
-                    End="87.5,62.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Transformacion_JardineriaStagingDIMCliente.Paths[Salida de origen de ADO NET1]"
-          TopLeft="559.5,101">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="53.5,66"
-              Start="0,0"
-              End="53.5,58.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,29" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,29"
-                    Point2="0,33"
-                    Point3="4,33" />
-                  <mssgle:LineSegment
-                    End="49.5,33" />
-                  <mssgle:CubicBezierSegment
-                    Point1="49.5,33"
-                    Point2="53.5,33"
-                    Point3="53.5,37" />
-                  <mssgle:LineSegment
-                    End="53.5,58.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="133,42"
-          Id="Package\Transformacion_JardineriaStagingDIMCliente\Merge Join"
-          TopLeft="390.954545454545,256.409090909091" />
-        <EdgeLayout
-          Id="Package\Transformacion_JardineriaStagingDIMCliente.Paths[Sort Output]"
-          TopLeft="278,212">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="179.454545454545,44.4090909090909"
-              Start="0,0"
-              End="179.454545454545,36.9090909090909">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,18.2045454545454" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,18.2045454545454"
-                    Point2="0,22.2045454545454"
-                    Point3="4,22.2045454545454" />
-                  <mssgle:LineSegment
-                    End="175.454545454545,22.2045454545454" />
-                  <mssgle:CubicBezierSegment
-                    Point1="175.454545454545,22.2045454545454"
-                    Point2="179.454545454545,22.2045454545454"
-                    Point3="179.454545454545,26.2045454545454" />
-                  <mssgle:LineSegment
-                    End="179.454545454545,36.9090909090909" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Transformacion_JardineriaStagingDIMCliente.Paths[Sort Output1]"
-          TopLeft="613,209">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-134.712121212121,47.4090909090909"
-              Start="0,0"
-              End="-134.712121212121,39.9090909090909">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,24.1073213562069" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,24.1073213562069"
-                    Point2="0,28.1073213562069"
-                    Point3="-4,28.1073213562069" />
-                  <mssgle:LineSegment
-                    End="-130.712121212121,28.1073213562069" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-130.712121212121,28.1073213562069"
-                    Point2="-134.712121212121,28.1073213562069"
-                    Point3="-134.712121212121,32.1073213562069" />
-                  <mssgle:LineSegment
-                    End="-134.712121212121,39.9090909090909" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="217,42"
-          Id="Package\Transformacion_JardineriaStagingDIMCliente\NuevosRegistrosDIMCliente"
-          TopLeft="360,347.272727272727" />
-        <EdgeLayout
-          Id="Package\Transformacion_JardineriaStagingDIMCliente.Paths[Merge Join Output]"
-          TopLeft="457.454545454545,298.409090909091">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="11.0454545454546,48.8636363636364"
-              Start="0,0"
-              End="11.0454545454546,41.3636363636364">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,20.4318181818182" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,20.4318181818182"
-                    Point2="0,24.4318181818182"
-                    Point3="4,24.4318181818182" />
-                  <mssgle:LineSegment
-                    End="7.04545454545456,24.4318181818182" />
-                  <mssgle:CubicBezierSegment
-                    Point1="7.04545454545456,24.4318181818182"
-                    Point2="11.0454545454546,24.4318181818182"
-                    Point3="11.0454545454546,28.4318181818182" />
-                  <mssgle:LineSegment
-                    End="11.0454545454546,41.3636363636364" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Transformacion_JardineriaStagingDIMCliente.Paths[RegistrosNuevos]"
-          TopLeft="471.818181818182,389.272727272727">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,64.9090909090909"
-              Start="0,0"
-              End="0,57.4090909090909">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,57.4090909090909" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-37.017578125,23.0121626420455,74.03515625,11.384765625"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Transformacion_JardineriaStagingDIMCliente\OrigenTbClienteStaging">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Transformacion_JardineriaStagingDIMCliente\DestinoDIMCliente">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Transformacion_JardineriaStagingDIMCliente\OrigenDIMCliente">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Extracción_Jardineria\Destino_TbCliente">
+    design-time-name="Package\Transformacion_JardineriaStagingDIMTiempo\DestinoDIMTiempo">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
