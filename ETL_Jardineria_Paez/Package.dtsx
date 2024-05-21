@@ -11,8 +11,8 @@
   DTS:LocaleID="9226"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="118"
-  DTS:VersionGUID="{C49ABB46-BBC8-4849-8049-362C7A68FD93}">
+  DTS:VersionBuild="134"
+  DTS:VersionGUID="{984C9AD6-6471-4AA6-9289-F0DDEE84D445}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -7578,95 +7578,6 @@ INNER JOIN
           version="1">
           <components>
             <component
-              refId="Package\Transformacion_JardineriaStagingFACTVentas\ConditionalRegistrosNuevos"
-              componentClassID="Microsoft.ConditionalSplit"
-              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
-              name="ConditionalRegistrosNuevos"
-              usesDispositions="true">
-              <inputs>
-                <input
-                  refId="Package\Transformacion_JardineriaStagingFACTVentas\ConditionalRegistrosNuevos.Inputs[Conditional Split Input]"
-                  description="Input to the Conditional Split Transformation"
-                  name="Conditional Split Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Transformacion_JardineriaStagingFACTVentas\ConditionalRegistrosNuevos.Inputs[Conditional Split Input].Columns[ID_VentaFact]"
-                      cachedDataType="i4"
-                      cachedName="ID_VentaFact"
-                      lineageId="Package\Transformacion_JardineriaStagingFACTVentas\Merge Join.Outputs[Merge Join Output].Columns[ID_VentaFact]" />
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Transformacion_JardineriaStagingFACTVentas\ConditionalRegistrosNuevos.Outputs[RegistrosNuevosFact]"
-                  description="Output 1 of the Conditional Split Transformation"
-                  errorOrTruncationOperation="Computation"
-                  errorRowDisposition="FailComponent"
-                  exclusionGroup="1"
-                  name="RegistrosNuevosFact"
-                  synchronousInputId="Package\Transformacion_JardineriaStagingFACTVentas\ConditionalRegistrosNuevos.Inputs[Conditional Split Input]"
-                  truncationRowDisposition="FailComponent">
-                  <properties>
-                    <property
-                      containsID="true"
-                      dataType="System.String"
-                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
-                      name="Expression">[ISNULL](#{Package\Transformacion_JardineriaStagingFACTVentas\Merge Join.Outputs[Merge Join Output].Columns[ID_VentaFact]})</property>
-                    <property
-                      containsID="true"
-                      dataType="System.String"
-                      description="Specifies the friendly version of the expression. This expression version uses column names."
-                      expressionType="Notify"
-                      name="FriendlyExpression">ISNULL(ID_VentaFact)</property>
-                    <property
-                      dataType="System.Int32"
-                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
-                      name="EvaluationOrder">0</property>
-                  </properties>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Transformacion_JardineriaStagingFACTVentas\ConditionalRegistrosNuevos.Outputs[Conditional Split Default Output]"
-                  description="Default Output of the Conditional Split Transformation"
-                  exclusionGroup="1"
-                  name="Conditional Split Default Output"
-                  synchronousInputId="Package\Transformacion_JardineriaStagingFACTVentas\ConditionalRegistrosNuevos.Inputs[Conditional Split Input]">
-                  <properties>
-                    <property
-                      dataType="System.Boolean"
-                      name="IsDefaultOut">true</property>
-                  </properties>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Transformacion_JardineriaStagingFACTVentas\ConditionalRegistrosNuevos.Outputs[Conditional Split Error Output]"
-                  description="Error Output of the Conditional Split Transformation"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Conditional Split Error Output"
-                  synchronousInputId="Package\Transformacion_JardineriaStagingFACTVentas\ConditionalRegistrosNuevos.Inputs[Conditional Split Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Transformacion_JardineriaStagingFACTVentas\ConditionalRegistrosNuevos.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Transformacion_JardineriaStagingFACTVentas\ConditionalRegistrosNuevos.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Transformacion_JardineriaStagingFACTVentas\ConditionalRegistrosNuevos.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Transformacion_JardineriaStagingFACTVentas\ConditionalRegistrosNuevos.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
               refId="Package\Transformacion_JardineriaStagingFACTVentas\DestinoFACTVentasStaging"
               componentClassID="Microsoft.ManagedComponentHost"
               contactInfo="Carga datos en una base de datos compatible con ADO.NET que use una vista o tabla de base de datos. Se cargan datos en una tabla nueva o existente. Por ejemplo, se usa un proveedor ADO.NET para ODBC para cargar datos en un destino ODBC.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;2"
@@ -7716,10 +7627,16 @@ INNER JOIN
                   name="Entrada de destino de ADO NET">
                   <inputColumns>
                     <inputColumn
+                      refId="Package\Transformacion_JardineriaStagingFACTVentas\DestinoFACTVentasStaging.Inputs[Entrada de destino de ADO NET].Columns[ID_DetallePedido]"
+                      cachedDataType="i4"
+                      cachedName="ID_DetallePedido"
+                      cachedSortKeyPosition="1"
+                      externalMetadataColumnId="Package\Transformacion_JardineriaStagingFACTVentas\DestinoFACTVentasStaging.Inputs[Entrada de destino de ADO NET].ExternalColumns[ID_DetallePedido]"
+                      lineageId="Package\Transformacion_JardineriaStagingFACTVentas\Merge Join.Outputs[Merge Join Output].Columns[ID_DetallePedido]" />
+                    <inputColumn
                       refId="Package\Transformacion_JardineriaStagingFACTVentas\DestinoFACTVentasStaging.Inputs[Entrada de destino de ADO NET].Columns[ID_Venta]"
                       cachedDataType="i4"
                       cachedName="ID_Venta"
-                      cachedSortKeyPosition="1"
                       externalMetadataColumnId="Package\Transformacion_JardineriaStagingFACTVentas\DestinoFACTVentasStaging.Inputs[Entrada de destino de ADO NET].ExternalColumns[ID_Venta]"
                       lineageId="Package\Transformacion_JardineriaStagingFACTVentas\Merge Join.Outputs[Merge Join Output].Columns[ID_Venta]" />
                     <inputColumn
@@ -7757,6 +7674,10 @@ INNER JOIN
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Transformacion_JardineriaStagingFACTVentas\DestinoFACTVentasStaging.Inputs[Entrada de destino de ADO NET].ExternalColumns[ID_DetallePedido]"
+                      dataType="i4"
+                      name="ID_DetallePedido" />
                     <externalMetadataColumn
                       refId="Package\Transformacion_JardineriaStagingFACTVentas\DestinoFACTVentasStaging.Inputs[Entrada de destino de ADO NET].ExternalColumns[ID_Venta]"
                       dataType="i4"
@@ -7844,38 +7765,43 @@ INNER JOIN
                   name="Merge Join Left Input">
                   <inputColumns>
                     <inputColumn
+                      refId="Package\Transformacion_JardineriaStagingFACTVentas\Merge Join.Inputs[Merge Join Left Input].Columns[ID_DetallePedido]"
+                      cachedDataType="i4"
+                      cachedName="ID_DetallePedido"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Transformacion_JardineriaStagingFACTVentas\SortPedidoSt.Outputs[Sort Output].Columns[ID_DetallePedido]" />
+                    <inputColumn
                       refId="Package\Transformacion_JardineriaStagingFACTVentas\Merge Join.Inputs[Merge Join Left Input].Columns[ID_Venta]"
                       cachedDataType="i4"
                       cachedName="ID_Venta"
-                      cachedSortKeyPosition="1"
-                      lineageId="Package\Transformacion_JardineriaStagingFACTVentas\SortVentasSt.Outputs[Sort Output].Columns[ID_Venta]" />
+                      lineageId="Package\Transformacion_JardineriaStagingFACTVentas\SortPedidoSt.Outputs[Sort Output].Columns[ID_Venta]" />
                     <inputColumn
                       refId="Package\Transformacion_JardineriaStagingFACTVentas\Merge Join.Inputs[Merge Join Left Input].Columns[ID_Producto]"
                       cachedDataType="i4"
                       cachedName="ID_Producto"
-                      lineageId="Package\Transformacion_JardineriaStagingFACTVentas\SortVentasSt.Outputs[Sort Output].Columns[ID_Producto]" />
+                      lineageId="Package\Transformacion_JardineriaStagingFACTVentas\SortPedidoSt.Outputs[Sort Output].Columns[ID_Producto]" />
                     <inputColumn
                       refId="Package\Transformacion_JardineriaStagingFACTVentas\Merge Join.Inputs[Merge Join Left Input].Columns[ID_Cliente]"
                       cachedDataType="i4"
                       cachedName="ID_Cliente"
-                      lineageId="Package\Transformacion_JardineriaStagingFACTVentas\SortVentasSt.Outputs[Sort Output].Columns[ID_Cliente]" />
+                      lineageId="Package\Transformacion_JardineriaStagingFACTVentas\SortPedidoSt.Outputs[Sort Output].Columns[ID_Cliente]" />
                     <inputColumn
                       refId="Package\Transformacion_JardineriaStagingFACTVentas\Merge Join.Inputs[Merge Join Left Input].Columns[ID_Tiempo]"
                       cachedDataType="i4"
                       cachedName="ID_Tiempo"
-                      lineageId="Package\Transformacion_JardineriaStagingFACTVentas\SortVentasSt.Outputs[Sort Output].Columns[ID_Tiempo]" />
+                      lineageId="Package\Transformacion_JardineriaStagingFACTVentas\SortPedidoSt.Outputs[Sort Output].Columns[ID_Tiempo]" />
                     <inputColumn
                       refId="Package\Transformacion_JardineriaStagingFACTVentas\Merge Join.Inputs[Merge Join Left Input].Columns[Cantidad]"
                       cachedDataType="i4"
                       cachedName="Cantidad"
-                      lineageId="Package\Transformacion_JardineriaStagingFACTVentas\SortVentasSt.Outputs[Sort Output].Columns[Cantidad]" />
+                      lineageId="Package\Transformacion_JardineriaStagingFACTVentas\SortPedidoSt.Outputs[Sort Output].Columns[Cantidad]" />
                     <inputColumn
                       refId="Package\Transformacion_JardineriaStagingFACTVentas\Merge Join.Inputs[Merge Join Left Input].Columns[Monto_Total]"
                       cachedDataType="numeric"
                       cachedName="Monto_Total"
                       cachedPrecision="26"
                       cachedScale="2"
-                      lineageId="Package\Transformacion_JardineriaStagingFACTVentas\SortVentasSt.Outputs[Sort Output].Columns[Monto_Total]" />
+                      lineageId="Package\Transformacion_JardineriaStagingFACTVentas\SortPedidoSt.Outputs[Sort Output].Columns[Monto_Total]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -7885,11 +7811,11 @@ INNER JOIN
                   name="Merge Join Right Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Transformacion_JardineriaStagingFACTVentas\Merge Join.Inputs[Merge Join Right Input].Columns[ID_Venta]"
+                      refId="Package\Transformacion_JardineriaStagingFACTVentas\Merge Join.Inputs[Merge Join Right Input].Columns[ID_DetallePedido]"
                       cachedDataType="i4"
-                      cachedName="ID_Venta"
+                      cachedName="ID_DetallePedido"
                       cachedSortKeyPosition="1"
-                      lineageId="Package\Transformacion_JardineriaStagingFACTVentas\SortFACTVentas.Outputs[Sort Output].Columns[ID_Venta]" />
+                      lineageId="Package\Transformacion_JardineriaStagingFACTVentas\SortFACTVentas.Outputs[Sort Output].Columns[ID_DetallePedido]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -7901,11 +7827,24 @@ INNER JOIN
                   name="Merge Join Output">
                   <outputColumns>
                     <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingFACTVentas\Merge Join.Outputs[Merge Join Output].Columns[ID_DetallePedido]"
+                      dataType="i4"
+                      lineageId="Package\Transformacion_JardineriaStagingFACTVentas\Merge Join.Outputs[Merge Join Output].Columns[ID_DetallePedido]"
+                      name="ID_DetallePedido"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Transformacion_JardineriaStagingFACTVentas\Merge Join.Inputs[Merge Join Left Input].Columns[ID_DetallePedido]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
                       refId="Package\Transformacion_JardineriaStagingFACTVentas\Merge Join.Outputs[Merge Join Output].Columns[ID_Venta]"
                       dataType="i4"
                       lineageId="Package\Transformacion_JardineriaStagingFACTVentas\Merge Join.Outputs[Merge Join Output].Columns[ID_Venta]"
-                      name="ID_Venta"
-                      sortKeyPosition="1">
+                      name="ID_Venta">
                       <properties>
                         <property
                           containsID="true"
@@ -7982,16 +7921,16 @@ INNER JOIN
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Transformacion_JardineriaStagingFACTVentas\Merge Join.Outputs[Merge Join Output].Columns[ID_VentaFact]"
+                      refId="Package\Transformacion_JardineriaStagingFACTVentas\Merge Join.Outputs[Merge Join Output].Columns[ID_DetallePedidoFACT]"
                       dataType="i4"
-                      lineageId="Package\Transformacion_JardineriaStagingFACTVentas\Merge Join.Outputs[Merge Join Output].Columns[ID_VentaFact]"
-                      name="ID_VentaFact">
+                      lineageId="Package\Transformacion_JardineriaStagingFACTVentas\Merge Join.Outputs[Merge Join Output].Columns[ID_DetallePedidoFACT]"
+                      name="ID_DetallePedidoFACT">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="The input column associated with this output column"
-                          name="InputColumnID">#{Package\Transformacion_JardineriaStagingFACTVentas\Merge Join.Inputs[Merge Join Right Input].Columns[ID_Venta]}</property>
+                          name="InputColumnID">#{Package\Transformacion_JardineriaStagingFACTVentas\Merge Join.Inputs[Merge Join Right Input].Columns[ID_DetallePedido]}</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -8050,6 +7989,15 @@ INNER JOIN
                   refId="Package\Transformacion_JardineriaStagingFACTVentas\OrigenFACTVentasStaging.Outputs[Salida de origen de ADO NET]"
                   name="Salida de origen de ADO NET">
                   <outputColumns>
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingFACTVentas\OrigenFACTVentasStaging.Outputs[Salida de origen de ADO NET].Columns[ID_DetallePedido]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transformacion_JardineriaStagingFACTVentas\OrigenFACTVentasStaging.Outputs[Salida de origen de ADO NET].ExternalColumns[ID_DetallePedido]"
+                      lineageId="Package\Transformacion_JardineriaStagingFACTVentas\OrigenFACTVentasStaging.Outputs[Salida de origen de ADO NET].Columns[ID_DetallePedido]"
+                      name="ID_DetallePedido"
+                      truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\Transformacion_JardineriaStagingFACTVentas\OrigenFACTVentasStaging.Outputs[Salida de origen de ADO NET].Columns[ID_Venta]"
                       dataType="i4"
@@ -8110,6 +8058,10 @@ INNER JOIN
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
+                      refId="Package\Transformacion_JardineriaStagingFACTVentas\OrigenFACTVentasStaging.Outputs[Salida de origen de ADO NET].ExternalColumns[ID_DetallePedido]"
+                      dataType="i4"
+                      name="ID_DetallePedido" />
+                    <externalMetadataColumn
                       refId="Package\Transformacion_JardineriaStagingFACTVentas\OrigenFACTVentasStaging.Outputs[Salida de origen de ADO NET].ExternalColumns[ID_Venta]"
                       dataType="i4"
                       name="ID_Venta" />
@@ -8142,6 +8094,11 @@ INNER JOIN
                   isErrorOut="true"
                   name="Salida de error de origen de ADO NET">
                   <outputColumns>
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingFACTVentas\OrigenFACTVentasStaging.Outputs[Salida de error de origen de ADO NET].Columns[ID_DetallePedido]"
+                      dataType="i4"
+                      lineageId="Package\Transformacion_JardineriaStagingFACTVentas\OrigenFACTVentasStaging.Outputs[Salida de error de origen de ADO NET].Columns[ID_DetallePedido]"
+                      name="ID_DetallePedido" />
                     <outputColumn
                       refId="Package\Transformacion_JardineriaStagingFACTVentas\OrigenFACTVentasStaging.Outputs[Salida de error de origen de ADO NET].Columns[ID_Venta]"
                       dataType="i4"
@@ -8205,7 +8162,8 @@ INNER JOIN
                   description="Especifica la instrucción SQL utilizada por el componente para extraer datos."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT
+	dp.ID_detalle_pedido AS ID_DetallePedido,
     p.ID_pedido AS ID_Venta,
     dp.ID_producto AS ID_Producto,
     p.ID_cliente AS ID_Cliente,
@@ -8254,6 +8212,15 @@ INNER JOIN
                   refId="Package\Transformacion_JardineriaStagingFACTVentas\OrigenTbPedidoStaging.Outputs[Salida de origen de ADO NET]"
                   name="Salida de origen de ADO NET">
                   <outputColumns>
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingFACTVentas\OrigenTbPedidoStaging.Outputs[Salida de origen de ADO NET].Columns[ID_DetallePedido]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transformacion_JardineriaStagingFACTVentas\OrigenTbPedidoStaging.Outputs[Salida de origen de ADO NET].ExternalColumns[ID_DetallePedido]"
+                      lineageId="Package\Transformacion_JardineriaStagingFACTVentas\OrigenTbPedidoStaging.Outputs[Salida de origen de ADO NET].Columns[ID_DetallePedido]"
+                      name="ID_DetallePedido"
+                      truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\Transformacion_JardineriaStagingFACTVentas\OrigenTbPedidoStaging.Outputs[Salida de origen de ADO NET].Columns[ID_Venta]"
                       dataType="i4"
@@ -8314,6 +8281,10 @@ INNER JOIN
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
+                      refId="Package\Transformacion_JardineriaStagingFACTVentas\OrigenTbPedidoStaging.Outputs[Salida de origen de ADO NET].ExternalColumns[ID_DetallePedido]"
+                      dataType="i4"
+                      name="ID_DetallePedido" />
+                    <externalMetadataColumn
                       refId="Package\Transformacion_JardineriaStagingFACTVentas\OrigenTbPedidoStaging.Outputs[Salida de origen de ADO NET].ExternalColumns[ID_Venta]"
                       dataType="i4"
                       name="ID_Venta" />
@@ -8346,6 +8317,11 @@ INNER JOIN
                   isErrorOut="true"
                   name="Salida de error de origen de ADO NET">
                   <outputColumns>
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingFACTVentas\OrigenTbPedidoStaging.Outputs[Salida de error de origen de ADO NET].Columns[ID_DetallePedido]"
+                      dataType="i4"
+                      lineageId="Package\Transformacion_JardineriaStagingFACTVentas\OrigenTbPedidoStaging.Outputs[Salida de error de origen de ADO NET].Columns[ID_DetallePedido]"
+                      name="ID_DetallePedido" />
                     <outputColumn
                       refId="Package\Transformacion_JardineriaStagingFACTVentas\OrigenTbPedidoStaging.Outputs[Salida de error de origen de ADO NET].Columns[ID_Venta]"
                       dataType="i4"
@@ -8396,6 +8372,95 @@ INNER JOIN
               </outputs>
             </component>
             <component
+              refId="Package\Transformacion_JardineriaStagingFACTVentas\RegistrosNuevosFACTStanging"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="RegistrosNuevosFACTStanging"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Transformacion_JardineriaStagingFACTVentas\RegistrosNuevosFACTStanging.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Transformacion_JardineriaStagingFACTVentas\RegistrosNuevosFACTStanging.Inputs[Conditional Split Input].Columns[ID_DetallePedidoFACT]"
+                      cachedDataType="i4"
+                      cachedName="ID_DetallePedidoFACT"
+                      lineageId="Package\Transformacion_JardineriaStagingFACTVentas\Merge Join.Outputs[Merge Join Output].Columns[ID_DetallePedidoFACT]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Transformacion_JardineriaStagingFACTVentas\RegistrosNuevosFACTStanging.Outputs[RegistrosNuevos]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="RegistrosNuevos"
+                  synchronousInputId="Package\Transformacion_JardineriaStagingFACTVentas\RegistrosNuevosFACTStanging.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">[ISNULL](#{Package\Transformacion_JardineriaStagingFACTVentas\Merge Join.Outputs[Merge Join Output].Columns[ID_DetallePedidoFACT]})</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">ISNULL(ID_DetallePedidoFACT)</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Transformacion_JardineriaStagingFACTVentas\RegistrosNuevosFACTStanging.Outputs[Conditional Split Default Output]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Conditional Split Default Output"
+                  synchronousInputId="Package\Transformacion_JardineriaStagingFACTVentas\RegistrosNuevosFACTStanging.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Transformacion_JardineriaStagingFACTVentas\RegistrosNuevosFACTStanging.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\Transformacion_JardineriaStagingFACTVentas\RegistrosNuevosFACTStanging.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingFACTVentas\RegistrosNuevosFACTStanging.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Transformacion_JardineriaStagingFACTVentas\RegistrosNuevosFACTStanging.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingFACTVentas\RegistrosNuevosFACTStanging.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Transformacion_JardineriaStagingFACTVentas\RegistrosNuevosFACTStanging.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\Transformacion_JardineriaStagingFACTVentas\SortFACTVentas"
               componentClassID="Microsoft.Sort"
               contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
@@ -8419,6 +8484,22 @@ INNER JOIN
                   name="Sort Input">
                   <inputColumns>
                     <inputColumn
+                      refId="Package\Transformacion_JardineriaStagingFACTVentas\SortFACTVentas.Inputs[Sort Input].Columns[ID_DetallePedido]"
+                      cachedDataType="i4"
+                      cachedName="ID_DetallePedido"
+                      lineageId="Package\Transformacion_JardineriaStagingFACTVentas\OrigenFACTVentasStaging.Outputs[Salida de origen de ADO NET].Columns[ID_DetallePedido]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
                       refId="Package\Transformacion_JardineriaStagingFACTVentas\SortFACTVentas.Inputs[Sort Input].Columns[ID_Venta]"
                       cachedDataType="i4"
                       cachedName="ID_Venta"
@@ -8431,7 +8512,7 @@ INNER JOIN
                         <property
                           dataType="System.Int32"
                           description="Specifies the sort order of the column."
-                          name="NewSortKeyPosition">1</property>
+                          name="NewSortKeyPosition">0</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
@@ -8527,11 +8608,24 @@ INNER JOIN
                   name="Sort Output">
                   <outputColumns>
                     <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingFACTVentas\SortFACTVentas.Outputs[Sort Output].Columns[ID_DetallePedido]"
+                      dataType="i4"
+                      lineageId="Package\Transformacion_JardineriaStagingFACTVentas\SortFACTVentas.Outputs[Sort Output].Columns[ID_DetallePedido]"
+                      name="ID_DetallePedido"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Transformacion_JardineriaStagingFACTVentas\OrigenFACTVentasStaging.Outputs[Salida de origen de ADO NET].Columns[ID_DetallePedido]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
                       refId="Package\Transformacion_JardineriaStagingFACTVentas\SortFACTVentas.Outputs[Sort Output].Columns[ID_Venta]"
                       dataType="i4"
                       lineageId="Package\Transformacion_JardineriaStagingFACTVentas\SortFACTVentas.Outputs[Sort Output].Columns[ID_Venta]"
-                      name="ID_Venta"
-                      sortKeyPosition="1">
+                      name="ID_Venta">
                       <properties>
                         <property
                           containsID="true"
@@ -8613,11 +8707,11 @@ INNER JOIN
               </outputs>
             </component>
             <component
-              refId="Package\Transformacion_JardineriaStagingFACTVentas\SortVentasSt"
+              refId="Package\Transformacion_JardineriaStagingFACTVentas\SortPedidoSt"
               componentClassID="Microsoft.Sort"
               contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
               description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
-              name="SortVentasSt"
+              name="SortPedidoSt"
               version="1">
               <properties>
                 <property
@@ -8632,14 +8726,14 @@ INNER JOIN
               </properties>
               <inputs>
                 <input
-                  refId="Package\Transformacion_JardineriaStagingFACTVentas\SortVentasSt.Inputs[Sort Input]"
+                  refId="Package\Transformacion_JardineriaStagingFACTVentas\SortPedidoSt.Inputs[Sort Input]"
                   name="Sort Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Transformacion_JardineriaStagingFACTVentas\SortVentasSt.Inputs[Sort Input].Columns[ID_Venta]"
+                      refId="Package\Transformacion_JardineriaStagingFACTVentas\SortPedidoSt.Inputs[Sort Input].Columns[ID_DetallePedido]"
                       cachedDataType="i4"
-                      cachedName="ID_Venta"
-                      lineageId="Package\Transformacion_JardineriaStagingFACTVentas\OrigenTbPedidoStaging.Outputs[Salida de origen de ADO NET].Columns[ID_Venta]">
+                      cachedName="ID_DetallePedido"
+                      lineageId="Package\Transformacion_JardineriaStagingFACTVentas\OrigenTbPedidoStaging.Outputs[Salida de origen de ADO NET].Columns[ID_DetallePedido]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -8652,7 +8746,23 @@ INNER JOIN
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Transformacion_JardineriaStagingFACTVentas\SortVentasSt.Inputs[Sort Input].Columns[ID_Producto]"
+                      refId="Package\Transformacion_JardineriaStagingFACTVentas\SortPedidoSt.Inputs[Sort Input].Columns[ID_Venta]"
+                      cachedDataType="i4"
+                      cachedName="ID_Venta"
+                      lineageId="Package\Transformacion_JardineriaStagingFACTVentas\OrigenTbPedidoStaging.Outputs[Salida de origen de ADO NET].Columns[ID_Venta]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transformacion_JardineriaStagingFACTVentas\SortPedidoSt.Inputs[Sort Input].Columns[ID_Producto]"
                       cachedDataType="i4"
                       cachedName="ID_Producto"
                       lineageId="Package\Transformacion_JardineriaStagingFACTVentas\OrigenTbPedidoStaging.Outputs[Salida de origen de ADO NET].Columns[ID_Producto]">
@@ -8668,7 +8778,7 @@ INNER JOIN
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Transformacion_JardineriaStagingFACTVentas\SortVentasSt.Inputs[Sort Input].Columns[ID_Cliente]"
+                      refId="Package\Transformacion_JardineriaStagingFACTVentas\SortPedidoSt.Inputs[Sort Input].Columns[ID_Cliente]"
                       cachedDataType="i4"
                       cachedName="ID_Cliente"
                       lineageId="Package\Transformacion_JardineriaStagingFACTVentas\OrigenTbPedidoStaging.Outputs[Salida de origen de ADO NET].Columns[ID_Cliente]">
@@ -8684,7 +8794,7 @@ INNER JOIN
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Transformacion_JardineriaStagingFACTVentas\SortVentasSt.Inputs[Sort Input].Columns[ID_Tiempo]"
+                      refId="Package\Transformacion_JardineriaStagingFACTVentas\SortPedidoSt.Inputs[Sort Input].Columns[ID_Tiempo]"
                       cachedDataType="i4"
                       cachedName="ID_Tiempo"
                       lineageId="Package\Transformacion_JardineriaStagingFACTVentas\OrigenTbPedidoStaging.Outputs[Salida de origen de ADO NET].Columns[ID_Tiempo]">
@@ -8700,7 +8810,7 @@ INNER JOIN
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Transformacion_JardineriaStagingFACTVentas\SortVentasSt.Inputs[Sort Input].Columns[Cantidad]"
+                      refId="Package\Transformacion_JardineriaStagingFACTVentas\SortPedidoSt.Inputs[Sort Input].Columns[Cantidad]"
                       cachedDataType="i4"
                       cachedName="Cantidad"
                       lineageId="Package\Transformacion_JardineriaStagingFACTVentas\OrigenTbPedidoStaging.Outputs[Salida de origen de ADO NET].Columns[Cantidad]">
@@ -8716,7 +8826,7 @@ INNER JOIN
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Transformacion_JardineriaStagingFACTVentas\SortVentasSt.Inputs[Sort Input].Columns[Monto_Total]"
+                      refId="Package\Transformacion_JardineriaStagingFACTVentas\SortPedidoSt.Inputs[Sort Input].Columns[Monto_Total]"
                       cachedDataType="numeric"
                       cachedName="Monto_Total"
                       cachedPrecision="26"
@@ -8739,16 +8849,29 @@ INNER JOIN
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Transformacion_JardineriaStagingFACTVentas\SortVentasSt.Outputs[Sort Output]"
+                  refId="Package\Transformacion_JardineriaStagingFACTVentas\SortPedidoSt.Outputs[Sort Output]"
                   isSorted="true"
                   name="Sort Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Transformacion_JardineriaStagingFACTVentas\SortVentasSt.Outputs[Sort Output].Columns[ID_Venta]"
+                      refId="Package\Transformacion_JardineriaStagingFACTVentas\SortPedidoSt.Outputs[Sort Output].Columns[ID_DetallePedido]"
                       dataType="i4"
-                      lineageId="Package\Transformacion_JardineriaStagingFACTVentas\SortVentasSt.Outputs[Sort Output].Columns[ID_Venta]"
-                      name="ID_Venta"
+                      lineageId="Package\Transformacion_JardineriaStagingFACTVentas\SortPedidoSt.Outputs[Sort Output].Columns[ID_DetallePedido]"
+                      name="ID_DetallePedido"
                       sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Transformacion_JardineriaStagingFACTVentas\OrigenTbPedidoStaging.Outputs[Salida de origen de ADO NET].Columns[ID_DetallePedido]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transformacion_JardineriaStagingFACTVentas\SortPedidoSt.Outputs[Sort Output].Columns[ID_Venta]"
+                      dataType="i4"
+                      lineageId="Package\Transformacion_JardineriaStagingFACTVentas\SortPedidoSt.Outputs[Sort Output].Columns[ID_Venta]"
+                      name="ID_Venta">
                       <properties>
                         <property
                           containsID="true"
@@ -8758,9 +8881,9 @@ INNER JOIN
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Transformacion_JardineriaStagingFACTVentas\SortVentasSt.Outputs[Sort Output].Columns[ID_Producto]"
+                      refId="Package\Transformacion_JardineriaStagingFACTVentas\SortPedidoSt.Outputs[Sort Output].Columns[ID_Producto]"
                       dataType="i4"
-                      lineageId="Package\Transformacion_JardineriaStagingFACTVentas\SortVentasSt.Outputs[Sort Output].Columns[ID_Producto]"
+                      lineageId="Package\Transformacion_JardineriaStagingFACTVentas\SortPedidoSt.Outputs[Sort Output].Columns[ID_Producto]"
                       name="ID_Producto">
                       <properties>
                         <property
@@ -8771,9 +8894,9 @@ INNER JOIN
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Transformacion_JardineriaStagingFACTVentas\SortVentasSt.Outputs[Sort Output].Columns[ID_Cliente]"
+                      refId="Package\Transformacion_JardineriaStagingFACTVentas\SortPedidoSt.Outputs[Sort Output].Columns[ID_Cliente]"
                       dataType="i4"
-                      lineageId="Package\Transformacion_JardineriaStagingFACTVentas\SortVentasSt.Outputs[Sort Output].Columns[ID_Cliente]"
+                      lineageId="Package\Transformacion_JardineriaStagingFACTVentas\SortPedidoSt.Outputs[Sort Output].Columns[ID_Cliente]"
                       name="ID_Cliente">
                       <properties>
                         <property
@@ -8784,9 +8907,9 @@ INNER JOIN
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Transformacion_JardineriaStagingFACTVentas\SortVentasSt.Outputs[Sort Output].Columns[ID_Tiempo]"
+                      refId="Package\Transformacion_JardineriaStagingFACTVentas\SortPedidoSt.Outputs[Sort Output].Columns[ID_Tiempo]"
                       dataType="i4"
-                      lineageId="Package\Transformacion_JardineriaStagingFACTVentas\SortVentasSt.Outputs[Sort Output].Columns[ID_Tiempo]"
+                      lineageId="Package\Transformacion_JardineriaStagingFACTVentas\SortPedidoSt.Outputs[Sort Output].Columns[ID_Tiempo]"
                       name="ID_Tiempo">
                       <properties>
                         <property
@@ -8797,9 +8920,9 @@ INNER JOIN
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Transformacion_JardineriaStagingFACTVentas\SortVentasSt.Outputs[Sort Output].Columns[Cantidad]"
+                      refId="Package\Transformacion_JardineriaStagingFACTVentas\SortPedidoSt.Outputs[Sort Output].Columns[Cantidad]"
                       dataType="i4"
-                      lineageId="Package\Transformacion_JardineriaStagingFACTVentas\SortVentasSt.Outputs[Sort Output].Columns[Cantidad]"
+                      lineageId="Package\Transformacion_JardineriaStagingFACTVentas\SortPedidoSt.Outputs[Sort Output].Columns[Cantidad]"
                       name="Cantidad">
                       <properties>
                         <property
@@ -8810,9 +8933,9 @@ INNER JOIN
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Transformacion_JardineriaStagingFACTVentas\SortVentasSt.Outputs[Sort Output].Columns[Monto_Total]"
+                      refId="Package\Transformacion_JardineriaStagingFACTVentas\SortPedidoSt.Outputs[Sort Output].Columns[Monto_Total]"
                       dataType="numeric"
-                      lineageId="Package\Transformacion_JardineriaStagingFACTVentas\SortVentasSt.Outputs[Sort Output].Columns[Monto_Total]"
+                      lineageId="Package\Transformacion_JardineriaStagingFACTVentas\SortPedidoSt.Outputs[Sort Output].Columns[Monto_Total]"
                       name="Monto_Total"
                       precision="26"
                       scale="2">
@@ -8833,17 +8956,17 @@ INNER JOIN
           <paths>
             <path
               refId="Package\Transformacion_JardineriaStagingFACTVentas.Paths[Merge Join Output]"
-              endId="Package\Transformacion_JardineriaStagingFACTVentas\ConditionalRegistrosNuevos.Inputs[Conditional Split Input]"
+              endId="Package\Transformacion_JardineriaStagingFACTVentas\RegistrosNuevosFACTStanging.Inputs[Conditional Split Input]"
               name="Merge Join Output"
               startId="Package\Transformacion_JardineriaStagingFACTVentas\Merge Join.Outputs[Merge Join Output]" />
             <path
-              refId="Package\Transformacion_JardineriaStagingFACTVentas.Paths[RegistrosNuevosFact]"
+              refId="Package\Transformacion_JardineriaStagingFACTVentas.Paths[RegistrosNuevos]"
               endId="Package\Transformacion_JardineriaStagingFACTVentas\DestinoFACTVentasStaging.Inputs[Entrada de destino de ADO NET]"
-              name="RegistrosNuevosFact"
-              startId="Package\Transformacion_JardineriaStagingFACTVentas\ConditionalRegistrosNuevos.Outputs[RegistrosNuevosFact]" />
+              name="RegistrosNuevos"
+              startId="Package\Transformacion_JardineriaStagingFACTVentas\RegistrosNuevosFACTStanging.Outputs[RegistrosNuevos]" />
             <path
               refId="Package\Transformacion_JardineriaStagingFACTVentas.Paths[Salida de origen de ADO NET]"
-              endId="Package\Transformacion_JardineriaStagingFACTVentas\SortVentasSt.Inputs[Sort Input]"
+              endId="Package\Transformacion_JardineriaStagingFACTVentas\SortPedidoSt.Inputs[Sort Input]"
               name="Salida de origen de ADO NET"
               startId="Package\Transformacion_JardineriaStagingFACTVentas\OrigenTbPedidoStaging.Outputs[Salida de origen de ADO NET]" />
             <path
@@ -8855,7 +8978,7 @@ INNER JOIN
               refId="Package\Transformacion_JardineriaStagingFACTVentas.Paths[Sort Output]"
               endId="Package\Transformacion_JardineriaStagingFACTVentas\Merge Join.Inputs[Merge Join Left Input]"
               name="Sort Output"
-              startId="Package\Transformacion_JardineriaStagingFACTVentas\SortVentasSt.Outputs[Sort Output]" />
+              startId="Package\Transformacion_JardineriaStagingFACTVentas\SortPedidoSt.Outputs[Sort Output]" />
             <path
               refId="Package\Transformacion_JardineriaStagingFACTVentas.Paths[Sort Output1]"
               endId="Package\Transformacion_JardineriaStagingFACTVentas\Merge Join.Inputs[Merge Join Right Input]"
@@ -8940,6 +9063,10 @@ INNER JOIN
           Size="304,42"
           Id="Package\Transformacion_JardineriaStagingDIMTiempo"
           TopLeft="88,159" />
+        <NodeLayout
+          Size="310,42"
+          Id="Package\Transformacion_JardineriaStagingFACTVentas"
+          TopLeft="81,368" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción]"
           TopLeft="235.25,59">
@@ -8984,10 +9111,6 @@ INNER JOIN
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="310,42"
-          Id="Package\Transformacion_JardineriaStagingFACTVentas"
-          TopLeft="81,368" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 2]"
           TopLeft="239,201">
@@ -9745,123 +9868,33 @@ INNER JOIN
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="181,42"
-          Id="Package\Transformacion_JardineriaStagingDIMProducto\DestinoDIMProducto"
-          TopLeft="293,414" />
+          Size="133,42"
+          Id="Package\Transformacion_JardineriaStagingDIMProducto\Merge Join"
+          TopLeft="319,248" />
         <NodeLayout
           Size="163,42"
           Id="Package\Transformacion_JardineriaStagingDIMProducto\SortDIMProducto"
           TopLeft="449,165" />
         <NodeLayout
-          Size="154,42"
-          Id="Package\Transformacion_JardineriaStagingDIMProducto\SortStProducto"
-          TopLeft="189.5,149.5" />
+          Size="227,42"
+          Id="Package\Transformacion_JardineriaStagingDIMProducto\RegistrosNuevosDIMProducto"
+          TopLeft="270,340" />
         <NodeLayout
           Size="206,42"
           Id="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging"
           TopLeft="177,73" />
         <NodeLayout
+          Size="154,42"
+          Id="Package\Transformacion_JardineriaStagingDIMProducto\SortStProducto"
+          TopLeft="189.5,149.5" />
+        <NodeLayout
+          Size="181,42"
+          Id="Package\Transformacion_JardineriaStagingDIMProducto\DestinoDIMProducto"
+          TopLeft="293,414" />
+        <NodeLayout
           Size="176,42"
           Id="Package\Transformacion_JardineriaStagingDIMProducto\OrigenDIMProducto"
           TopLeft="452,79" />
-        <NodeLayout
-          Size="227,42"
-          Id="Package\Transformacion_JardineriaStagingDIMProducto\RegistrosNuevosDIMProducto"
-          TopLeft="270,340" />
-        <NodeLayout
-          Size="133,42"
-          Id="Package\Transformacion_JardineriaStagingDIMProducto\Merge Join"
-          TopLeft="319,248" />
-        <EdgeLayout
-          Id="Package\Transformacion_JardineriaStagingDIMProducto.Paths[Sort Output]"
-          TopLeft="266.5,191.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="98.1666666666667,56.5"
-              Start="0,0"
-              End="98.1666666666667,49">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,29.4970282317979" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,29.4970282317979"
-                    Point2="0,33.4970282317979"
-                    Point3="4,33.4970282317979" />
-                  <mssgle:LineSegment
-                    End="94.1666666666667,33.4970282317979" />
-                  <mssgle:CubicBezierSegment
-                    Point1="94.1666666666667,33.4970282317979"
-                    Point2="98.1666666666667,33.4970282317979"
-                    Point3="98.1666666666667,37.4970282317979" />
-                  <mssgle:LineSegment
-                    End="98.1666666666667,49" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Transformacion_JardineriaStagingDIMProducto.Paths[Salida de origen de ADO NET]"
-          TopLeft="540,121">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-9.5,44"
-              Start="0,0"
-              End="-9.5,36.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,18" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,18"
-                    Point2="0,22"
-                    Point3="-4,22" />
-                  <mssgle:LineSegment
-                    End="-5.5,22" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-5.5,22"
-                    Point2="-9.5,22"
-                    Point3="-9.5,26" />
-                  <mssgle:LineSegment
-                    End="-9.5,36.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Transformacion_JardineriaStagingDIMProducto.Paths[Merge Join Output]"
-          TopLeft="384.5,290">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,50"
-              Start="0,0"
-              End="0,42.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,42.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package\Transformacion_JardineriaStagingDIMProducto.Paths[Sort Output1]"
           TopLeft="530.5,207">
@@ -9888,6 +9921,40 @@ INNER JOIN
                     Point3="-124.166666666667,28.3075780089153" />
                   <mssgle:LineSegment
                     End="-124.166666666667,33.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transformacion_JardineriaStagingDIMProducto.Paths[Sort Output]"
+          TopLeft="266.5,191.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="98.1666666666667,56.5"
+              Start="0,0"
+              End="98.1666666666667,49">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.4970282317979" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.4970282317979"
+                    Point2="0,33.4970282317979"
+                    Point3="4,33.4970282317979" />
+                  <mssgle:LineSegment
+                    End="94.1666666666667,33.4970282317979" />
+                  <mssgle:CubicBezierSegment
+                    Point1="94.1666666666667,33.4970282317979"
+                    Point2="98.1666666666667,33.4970282317979"
+                    Point3="98.1666666666667,37.4970282317979" />
+                  <mssgle:LineSegment
+                    End="98.1666666666667,49" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -9931,6 +9998,40 @@ INNER JOIN
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
+          Id="Package\Transformacion_JardineriaStagingDIMProducto.Paths[Salida de origen de ADO NET]"
+          TopLeft="540,121">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-9.5,44"
+              Start="0,0"
+              End="-9.5,36.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18"
+                    Point2="0,22"
+                    Point3="-4,22" />
+                  <mssgle:LineSegment
+                    End="-5.5,22" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-5.5,22"
+                    Point2="-9.5,22"
+                    Point3="-9.5,26" />
+                  <mssgle:LineSegment
+                    End="-9.5,36.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
           Id="Package\Transformacion_JardineriaStagingDIMProducto.Paths[RegistrosNuevos]"
           TopLeft="383.5,382">
           <EdgeLayout.Curve>
@@ -9954,11 +10055,33 @@ INNER JOIN
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transformacion_JardineriaStagingDIMProducto.Paths[Merge Join Output]"
+          TopLeft="384.5,290">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,50"
+              Start="0,0"
+              End="0,42.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Transformacion_JardineriaStagingDIMProducto\DestinoDIMProducto">
+    design-time-name="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -9966,7 +10089,7 @@ INNER JOIN
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Transformacion_JardineriaStagingDIMProducto\OrigenTbProductoStaging">
+    design-time-name="Package\Transformacion_JardineriaStagingDIMProducto\DestinoDIMProducto">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -10271,35 +10394,47 @@ INNER JOIN
           Id="Package\Transformacion_JardineriaStagingFACTVentas\OrigenTbPedidoStaging"
           TopLeft="87,67" />
         <NodeLayout
-          Size="217,42"
-          Id="Package\Transformacion_JardineriaStagingFACTVentas\DestinoFACTVentasStaging"
-          TopLeft="284,469" />
-        <NodeLayout
           Size="212,42"
           Id="Package\Transformacion_JardineriaStagingFACTVentas\OrigenFACTVentasStaging"
-          TopLeft="412,56" />
+          TopLeft="457,66" />
+        <NodeLayout
+          Size="217,42"
+          Id="Package\Transformacion_JardineriaStagingFACTVentas\DestinoFACTVentasStaging"
+          TopLeft="351,522" />
         <NodeLayout
           Size="144,42"
-          Id="Package\Transformacion_JardineriaStagingFACTVentas\SortVentasSt"
-          TopLeft="114,178" />
+          Id="Package\Transformacion_JardineriaStagingFACTVentas\SortPedidoSt"
+          TopLeft="145,214" />
         <NodeLayout
           Size="162,42"
           Id="Package\Transformacion_JardineriaStagingFACTVentas\SortFACTVentas"
-          TopLeft="502,183" />
+          TopLeft="497,200" />
         <EdgeLayout
           Id="Package\Transformacion_JardineriaStagingFACTVentas.Paths[Salida de origen de ADO NET]"
-          TopLeft="185.75,109">
+          TopLeft="185.5,109">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,69"
+              EndConnector="31.5,105"
               Start="0,0"
-              End="0,61.5">
+              End="31.5,97.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,61.5" />
+                    End="0,48.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,48.5"
+                    Point2="0,52.5"
+                    Point3="4,52.5" />
+                  <mssgle:LineSegment
+                    End="27.5,52.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="27.5,52.5"
+                    Point2="31.5,52.5"
+                    Point3="31.5,56.5" />
+                  <mssgle:LineSegment
+                    End="31.5,97.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -10310,30 +10445,30 @@ INNER JOIN
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Transformacion_JardineriaStagingFACTVentas.Paths[Salida de origen de ADO NET1]"
-          TopLeft="518,98">
+          TopLeft="563,108">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="65,85"
+              EndConnector="15,92"
               Start="0,0"
-              End="65,77.5">
+              End="15,84.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,38.5" />
+                    End="0,42" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,38.5"
-                    Point2="0,42.5"
-                    Point3="4,42.5" />
+                    Point1="0,42"
+                    Point2="0,46"
+                    Point3="4,46" />
                   <mssgle:LineSegment
-                    End="61,42.5" />
+                    End="11,46" />
                   <mssgle:CubicBezierSegment
-                    Point1="61,42.5"
-                    Point2="65,42.5"
-                    Point3="65,46.5" />
+                    Point1="11,46"
+                    Point2="15,46"
+                    Point3="15,50" />
                   <mssgle:LineSegment
-                    End="65,77.5" />
+                    End="15,84.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -10345,33 +10480,33 @@ INNER JOIN
         <NodeLayout
           Size="133,42"
           Id="Package\Transformacion_JardineriaStagingFACTVentas\Merge Join"
-          TopLeft="342,278" />
+          TopLeft="391,326" />
         <EdgeLayout
           Id="Package\Transformacion_JardineriaStagingFACTVentas.Paths[Sort Output]"
-          TopLeft="186,220">
+          TopLeft="217,256">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="201.666666666667,58"
+              EndConnector="240.5,70"
               Start="0,0"
-              End="201.666666666667,50.5">
+              End="240.5,62.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,30.3863298662704" />
+                    End="0,31" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,30.3863298662704"
-                    Point2="0,34.3863298662704"
-                    Point3="4,34.3863298662704" />
+                    Point1="0,31"
+                    Point2="0,35"
+                    Point3="4,35" />
                   <mssgle:LineSegment
-                    End="197.666666666667,34.3863298662704" />
+                    End="236.5,35" />
                   <mssgle:CubicBezierSegment
-                    Point1="197.666666666667,34.3863298662704"
-                    Point2="201.666666666667,34.3863298662704"
-                    Point3="201.666666666667,38.3863298662704" />
+                    Point1="236.5,35"
+                    Point2="240.5,35"
+                    Point3="240.5,39" />
                   <mssgle:LineSegment
-                    End="201.666666666667,50.5" />
+                    End="240.5,62.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -10382,30 +10517,30 @@ INNER JOIN
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Transformacion_JardineriaStagingFACTVentas.Paths[Sort Output1]"
-          TopLeft="583,225">
+          TopLeft="578,242">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-153.666666666667,53"
+              EndConnector="-99.6666666666667,84"
               Start="0,0"
-              End="-153.666666666667,45.5">
+              End="-99.6666666666667,76.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,27.4219910846954" />
+                    End="0,45.8008915304606" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,27.4219910846954"
-                    Point2="0,31.4219910846954"
-                    Point3="-4,31.4219910846954" />
+                    Point1="0,45.8008915304606"
+                    Point2="0,49.8008915304606"
+                    Point3="-4,49.8008915304606" />
                   <mssgle:LineSegment
-                    End="-149.666666666667,31.4219910846954" />
+                    End="-95.6666666666667,49.8008915304606" />
                   <mssgle:CubicBezierSegment
-                    Point1="-149.666666666667,31.4219910846954"
-                    Point2="-153.666666666667,31.4219910846954"
-                    Point3="-153.666666666667,35.4219910846954" />
+                    Point1="-95.6666666666667,49.8008915304606"
+                    Point2="-99.6666666666667,49.8008915304606"
+                    Point3="-99.6666666666667,53.8008915304606" />
                   <mssgle:LineSegment
-                    End="-153.666666666667,45.5" />
+                    End="-99.6666666666667,76.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -10415,35 +10550,23 @@ INNER JOIN
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
-          Size="218,42"
-          Id="Package\Transformacion_JardineriaStagingFACTVentas\ConditionalRegistrosNuevos"
-          TopLeft="287,377" />
+          Size="235,42"
+          Id="Package\Transformacion_JardineriaStagingFACTVentas\RegistrosNuevosFACTStanging"
+          TopLeft="343,426" />
         <EdgeLayout
           Id="Package\Transformacion_JardineriaStagingFACTVentas.Paths[Merge Join Output]"
-          TopLeft="408.5,320">
+          TopLeft="459,368">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-12.5,57"
+              EndConnector="0,58"
               Start="0,0"
-              End="-12.5,49.5">
+              End="0,50.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,24.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,24.5"
-                    Point2="0,28.5"
-                    Point3="-4,28.5" />
-                  <mssgle:LineSegment
-                    End="-8.5,28.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-8.5,28.5"
-                    Point2="-12.5,28.5"
-                    Point3="-12.5,32.5" />
-                  <mssgle:LineSegment
-                    End="-12.5,49.5" />
+                    End="0,50.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -10453,26 +10576,26 @@ INNER JOIN
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Transformacion_JardineriaStagingFACTVentas.Paths[RegistrosNuevosFact]"
-          TopLeft="394.25,419">
+          Id="Package\Transformacion_JardineriaStagingFACTVentas.Paths[RegistrosNuevos]"
+          TopLeft="460,468">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,50"
+              EndConnector="0,54"
               Start="0,0"
-              End="0,42.5">
+              End="0,46.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,42.5" />
+                    End="0,46.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-46.31138671875,15.5576171875,92.6227734375,11.384765625"
+              BoundingBox="-37.017578125,17.5576171875,74.03515625,11.384765625"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -10488,7 +10611,7 @@ INNER JOIN
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Transformacion_JardineriaStagingFACTVentas\DestinoFACTVentasStaging">
+    design-time-name="Package\Transformacion_JardineriaStagingFACTVentas\OrigenFACTVentasStaging">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -10496,7 +10619,7 @@ INNER JOIN
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Transformacion_JardineriaStagingFACTVentas\OrigenFACTVentasStaging">
+    design-time-name="Package\Transformacion_JardineriaStagingFACTVentas\DestinoFACTVentasStaging">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
